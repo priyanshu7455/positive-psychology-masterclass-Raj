@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSY292 – Positive Psychology | Master Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0e1a;
+  --bg2: #111827;
+  --bg3: #1a2234;
+  --card: #1e2a3a;
+  --border: #2a3a50;
+  --text: #e8edf5;
+  --text2: #94a3b8;
+  --accent: #6ee7b7;
+  --accent2: #38bdf8;
+  --gold: #fbbf24;
+  --red: #f87171;
+  --green: #86efac;
+  --purple: #c084fc;
+  --pink: #f472b6;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 14px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+[data-theme="light"] {
+  --bg: #f0f4ff;
+  --bg2: #ffffff;
+  --bg3: #e8eef8;
+  --card: #ffffff;
+  --border: #d1daea;
+  --text: #1a2234;
+  --text2: #5a6a82;
+  --shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;padding:24px 0;z-index:100;transition:transform .3s}
+.sidebar-logo{padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:12px}
+.sidebar-logo h1{font-family:var(--font-head);font-size:20px;font-weight:800;color:var(--accent);line-height:1.1}
+.sidebar-logo p{font-size:11px;color:var(--text2);margin-top:4px}
+.sidebar-section{padding:8px 16px 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--text2);text-transform:uppercase}
+.sidebar-item{display:flex;align-items:center;gap:10px;padding:9px 20px;cursor:pointer;border-radius:0;transition:all .2s;font-size:13.5px;color:var(--text2);border-left:3px solid transparent}
+.sidebar-item:hover{background:var(--bg3);color:var(--text);border-left-color:var(--border)}
+.sidebar-item.active{background:rgba(110,231,183,0.1);color:var(--accent);border-left-color:var(--accent);font-weight:500}
+.sidebar-item .unit-badge{background:var(--bg3);color:var(--text2);font-size:10px;padding:2px 7px;border-radius:4px;margin-left:auto}
+.sidebar-item.active .unit-badge{background:rgba(110,231,183,0.2);color:var(--accent)}
+
+/* PROGRESS BAR */
+.progress-section{padding:12px 20px;border-top:1px solid var(--border);margin-top:8px}
+.progress-label{font-size:12px;color:var(--text2);margin-bottom:6px;display:flex;justify-content:space-between}
+.progress-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .5s}
+
+/* MAIN CONTENT */
+.main{padding:0;overflow-y:auto}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--text)}
+.topbar-actions{display:flex;gap:10px;align-items:center}
+.btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-family:var(--font-body);font-size:13px;font-weight:500;transition:all .2s}
+.btn-primary{background:var(--accent);color:#0a1a14}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-ghost{background:var(--bg3);color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--border)}
+
+/* PAGE SECTIONS */
+.page{display:none;padding:32px;max-width:1100px;margin:0 auto}
+.page.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f2027,#1a2a4a,#203a43);border-radius:var(--radius);padding:40px;margin-bottom:32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:250px;height:250px;background:radial-gradient(circle,rgba(110,231,183,.15),transparent 70%);border-radius:50%}
+.hero h2{font-family:var(--font-head);font-size:32px;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text2);font-size:15px;max-width:600px;line-height:1.6}
+.hero-stats{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.hero-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px 20px;text-align:center}
+.hero-stat .num{font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--accent)}
+.hero-stat .lbl{font-size:11px;color:var(--text2)}
+
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:28px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card-icon{font-size:28px;margin-bottom:12px}
+.card h3{font-family:var(--font-head);font-size:16px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--text2);line-height:1.6}
+.card-red{border-left:4px solid var(--red)}
+.card-yellow{border-left:4px solid var(--gold)}
+.card-green{border-left:4px solid var(--green)}
+.card-blue{border-left:4px solid var(--accent2)}
+.card-purple{border-left:4px solid var(--purple)}
+
+/* IMPORTANCE BADGES */
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:8px}
+.badge-red{background:rgba(248,113,113,.2);color:var(--red)}
+.badge-yellow{background:rgba(251,191,36,.2);color:var(--gold)}
+.badge-green{background:rgba(134,239,172,.2);color:var(--green)}
+
+/* CONTENT SECTIONS */
+.section-title{font-family:var(--font-head);font-size:24px;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.subsection{margin-bottom:32px}
+.subsection h3{font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:14px;color:var(--accent)}
+.subsection h4{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--accent2)}
+.subsection p,.subsection li{font-size:14px;line-height:1.8;color:var(--text2)}
+.subsection li{margin-left:20px;margin-bottom:6px}
+.subsection ul,ol{margin-bottom:12px}
+.highlight{background:rgba(110,231,183,.1);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:14px}
+.highlight strong{color:var(--accent)}
+.warning{background:rgba(248,113,113,.1);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:14px}
+.memory{background:rgba(251,191,36,.1);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:14px}
+.memory-icon{font-size:18px;margin-right:8px}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--bg3);color:var(--accent);font-weight:600;padding:10px 14px;text-align:left;border-bottom:2px solid var(--border)}
+td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+tr:hover td{background:var(--bg3)}
+
+/* MCQ QUIZ */
+.quiz-container{margin:20px 0}
+.quiz-question{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px}
+.quiz-question .q-number{font-size:11px;color:var(--accent);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.quiz-question .q-text{font-size:15px;font-weight:500;margin-bottom:16px;line-height:1.6}
+.quiz-options{display:grid;gap:10px}
+.quiz-option{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:13.5px;transition:all .2s;display:flex;align-items:center;gap:10px}
+.quiz-option:hover{border-color:var(--accent2);background:rgba(56,189,248,.08)}
+.quiz-option.correct{background:rgba(134,239,172,.15);border-color:var(--green);color:var(--green)}
+.quiz-option.wrong{background:rgba(248,113,113,.15);border-color:var(--red);color:var(--red)}
+.quiz-option.reveal{background:rgba(134,239,172,.1);border-color:var(--green)}
+.quiz-explanation{margin-top:14px;padding:14px;background:rgba(56,189,248,.08);border-radius:10px;font-size:13.5px;display:none;border-left:3px solid var(--accent2)}
+.quiz-explanation.show{display:block}
+.quiz-controls{display:flex;gap:10px;margin-top:12px}
+
+/* FLASHCARDS */
+.flashcard-deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.flashcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;min-height:160px;position:relative;transition:transform .6s;transform-style:preserve-3d;perspective:1000px}
+.flashcard.flipped{transform:rotateY(180deg)}
+.card-front,.card-back{backface-visibility:hidden;position:absolute;top:0;left:0;right:0;bottom:0;padding:24px;display:flex;flex-direction:column;justify-content:center;border-radius:var(--radius)}
+.card-back{transform:rotateY(180deg);background:rgba(110,231,183,.08);border:1px solid rgba(110,231,183,.3)}
+.card-front h4{font-family:var(--font-head);font-size:15px;font-weight:700;margin-bottom:8px}
+.card-front p{font-size:12px;color:var(--text2)}
+.card-back p{font-size:13.5px;color:var(--accent);line-height:1.7}
+.fc-tag{position:absolute;top:12px;right:12px;font-size:10px;padding:3px 8px;border-radius:4px;background:var(--bg3);color:var(--text2)}
+
+/* EXAM BOOSTER */
+.exam-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+.exam-card h3{font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--gold);margin-bottom:12px}
+
+/* TABS */
+.tabs{display:flex;gap:4px;background:var(--bg3);padding:4px;border-radius:10px;margin-bottom:24px;flex-wrap:wrap}
+.tab{padding:8px 16px;border-radius:7px;cursor:pointer;font-size:13px;color:var(--text2);transition:all .2s;flex:1;text-align:center;white-space:nowrap}
+.tab.active{background:var(--card);color:var(--text);font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeIn .3s ease}
+
+/* MOBILE TOGGLE */
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:90}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:30px;margin:16px 0}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg2)}
+.timeline-item h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.timeline-item p{font-size:13px;color:var(--text2)}
+
+/* REVISION SHEET */
+.revision-sheet{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px}
+.revision-sheet h3{font-family:var(--font-head);font-size:18px;color:var(--accent);margin-bottom:16px}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rev-item{background:var(--card);border-radius:8px;padding:12px;font-size:13px}
+.rev-item strong{color:var(--accent2);display:block;margin-bottom:4px}
+
+/* MOCK TEST */
+.mock-test-header{background:linear-gradient(135deg,#1a0a2e,#16213e);border:1px solid var(--purple);border-radius:var(--radius);padding:24px;margin-bottom:24px;text-align:center}
+.timer-display{font-family:var(--font-head);font-size:48px;font-weight:800;color:var(--purple);letter-spacing:4px}
+
+/* STREAK TRACKER */
+.streak-tracker{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:24px}
+.streak-days{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.streak-day{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.streak-day.done{background:var(--accent);color:#0a1a14;border-color:var(--accent)}
+
+/* ACCORDION */
+.accordion{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:12px}
+.accordion-header{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--card);font-weight:600;font-size:14px;transition:background .2s}
+.accordion-header:hover{background:var(--bg3)}
+.accordion-header .arrow{transition:transform .3s;font-size:12px}
+.accordion-body{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.accordion-body.open{max-height:2000px;padding:16px 20px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:fixed;left:0;top:0;bottom:0;width:280px;transform:translateX(-100%);z-index:200}
+  .sidebar.open{transform:translateX(0)}
+  .overlay.show{display:block}
+  .menu-toggle{display:block}
+  .page{padding:20px 16px}
+  .rev-grid{grid-template-columns:1fr}
+  .hero h2{font-size:24px}
+}
+
+/* TOOLTIPS */
+.tooltip{position:relative;cursor:help}
+.tooltip::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:6px 12px;border-radius:6px;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:100}
+.tooltip:hover::after{opacity:1}
+
+/* THEORY BOX */
+.theory-box{background:linear-gradient(135deg,rgba(192,132,252,.08),rgba(56,189,248,.08));border:1px solid rgba(192,132,252,.3);border-radius:var(--radius);padding:20px;margin:16px 0}
+.theory-box h4{color:var(--purple);font-size:15px;font-weight:700;margin-bottom:10px}
+.theory-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.theory-tag{background:var(--bg3);border-radius:6px;padding:4px 10px;font-size:11px;color:var(--text2)}
+
+/* KEYWORD CHIPS */
+.keywords{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.keyword{background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.3);color:var(--accent2);padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500}
+
+/* MNEMONIC BOX */
+.mnemonic{background:rgba(251,191,36,.08);border:2px dashed rgba(251,191,36,.4);border-radius:10px;padding:16px;margin:12px 0;font-size:14px}
+.mnemonic strong{color:var(--gold);font-size:16px}
+
+/* DIFF TABLE */
+.diff-table th:first-child{color:var(--red)}
+.diff-table th:last-child{color:var(--green)}
+</style>
+</head>
+<body>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <h1>PSY292 📚</h1>
+    <p>Positive Psychology Master Guide</p>
+  </div>
+
+  <div class="sidebar-section">📍 Navigation</div>
+  <div class="sidebar-item active" onclick="showPage('home',this)">🏠 Dashboard</div>
+  <div class="sidebar-item" onclick="showPage('roadmap',this)">🗺️ Study Roadmap</div>
+  <div class="sidebar-item" onclick="showPage('exam-analysis',this)">🔍 Exam Analysis</div>
+
+  <div class="sidebar-section">📖 Units</div>
+  <div class="sidebar-item" onclick="showPage('unit1',this)">Unit I – Intro to +ve Psych <span class="unit-badge">🔴 High</span></div>
+  <div class="sidebar-item" onclick="showPage('unit2',this)">Unit II – Self Control <span class="unit-badge">🔴 High</span></div>
+  <div class="sidebar-item" onclick="showPage('unit3',this)">Unit III – Positive Traits <span class="unit-badge">🔴 High</span></div>
+  <div class="sidebar-item" onclick="showPage('unit4',this)">Unit IV – Cognitive States <span class="unit-badge">🔴 High</span></div>
+  <div class="sidebar-item" onclick="showPage('unit5',this)">Unit V – Happiness <span class="unit-badge">🔴 High</span></div>
+  <div class="sidebar-item" onclick="showPage('unit6',this)">Unit VI – Applications <span class="unit-badge">🟡 Med</span></div>
+
+  <div class="sidebar-section">🧠 Practice</div>
+  <div class="sidebar-item" onclick="showPage('flashcards',this)">⚡ Flashcards</div>
+  <div class="sidebar-item" onclick="showPage('mcq-quiz',this)">🎯 MCQ Quiz Bank</div>
+  <div class="sidebar-item" onclick="showPage('subjective',this)">✍️ Subjective Questions</div>
+  <div class="sidebar-item" onclick="showPage('mock-test',this)">📝 Full Mock Test</div>
+
+  <div class="sidebar-section">🚀 Exam Prep</div>
+  <div class="sidebar-item" onclick="showPage('exam-strategy',this)">⚔️ Exam Strategy</div>
+  <div class="sidebar-item" onclick="showPage('quick-revision',this)">⚡ Quick Revision</div>
+  <div class="sidebar-item" onclick="showPage('keywords',this)">🔑 Top Keywords & Defs</div>
+
+  <div class="progress-section">
+    <div class="progress-label">
+      <span>Study Progress</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-title" id="topbarTitle">PSY292 Dashboard</div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-ghost" onclick="toggleTheme()">🌙 Theme</button>
+      <button class="btn btn-primary" onclick="showPage('quick-revision',document.querySelector('.sidebar-item'))">⚡ Quick Revise</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ HOME ═══════════ -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <h2>Master PSY292 – Positive Psychology 🧠✨</h2>
+      <p>Your complete exam preparation guide. Deep learning, memory tricks, MCQs, flashcards, and everything you need to ace your end-term exam.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">6</div><div class="lbl">Units</div></div>
+        <div class="hero-stat"><div class="num">70+</div><div class="lbl">MCQs</div></div>
+        <div class="hero-stat"><div class="num">15</div><div class="lbl">Subjective Qs</div></div>
+        <div class="hero-stat"><div class="num">50+</div><div class="lbl">Flashcards</div></div>
+        <div class="hero-stat"><div class="num">70</div><div class="lbl">Max Marks</div></div>
+      </div>
+    </div>
+
+    <div class="streak-tracker">
+      <h3 style="font-family:var(--font-head);font-weight:700">🔥 Study Streak Tracker</h3>
+      <p style="font-size:13px;color:var(--text2);margin-top:4px">Click a day to mark it studied!</p>
+      <div class="streak-days" id="streakDays"></div>
+    </div>
+
+    <div class="section-title">📋 Exam Pattern Overview</div>
+    <div class="cards-grid">
+      <div class="card card-blue">
+        <div class="card-icon">📄</div>
+        <h3>Part A – MCQs</h3>
+        <p>30 questions × 1 mark = 30 marks. Negative marking: –0.25 per wrong answer. Attempt ALL.</p>
+      </div>
+      <div class="card card-purple">
+        <div class="card-icon">✍️</div>
+        <h3>Part B – Subjective</h3>
+        <p>5 questions × 10 marks = 50 marks. Attempt ANY 4 out of 5. First 4 attempted will be evaluated.</p>
+      </div>
+      <div class="card card-red">
+        <div class="card-icon">⏰</div>
+        <h3>Time Management</h3>
+        <p>3 hours total. First 90 min: OMR sheet for Part A. Remaining time: Part B subjective answers.</p>
+      </div>
+      <div class="card card-yellow">
+        <div class="card-icon">🎯</div>
+        <h3>Total Marks</h3>
+        <p>Maximum 70 marks. CO1-CO6 all tested. Bloom's Taxonomy levels L1–L6 applied.</p>
+      </div>
+    </div>
+
+    <div class="section-title">🔴 Most Important Topics (From Sample Paper)</div>
+    <div class="cards-grid">
+      <div class="card card-red">
+        <span class="badge badge-red">🔴 Must Learn</span>
+        <h3>Self-Regulation & Self-Control</h3>
+        <p>Q7, Q16, Q22, Q29, Q30 in sample paper + Part B Q5 – Most repeated concept!</p>
+      </div>
+      <div class="card card-red">
+        <span class="badge badge-red">🔴 Must Learn</span>
+        <h3>Resilience</h3>
+        <p>Q4, Q14, Q19, Q23 MCQs + Q2 Part B (10 marks) – Second most repeated!</p>
+      </div>
+      <div class="card card-red">
+        <span class="badge badge-red">🔴 Must Learn</span>
+        <h3>Personality Trait Theories</h3>
+        <p>Q3 (Hippocrates), Q11, Q13 (Big Five), Q20, Q21 MCQs + Q6 Part B – Allport's Theory!</p>
+      </div>
+      <div class="card card-red">
+        <span class="badge badge-red">🔴 Must Learn</span>
+        <h3>Happiness – Measurement & Effects</h3>
+        <p>Q5, Q8, Q9, Q25, Q28 MCQs + Q4 Part B (10 marks) – Critical unit!</p>
+      </div>
+      <div class="card card-yellow">
+        <span class="badge badge-yellow">🟡 Important</span>
+        <h3>Applications – Journaling, Mindfulness</h3>
+        <p>Q15, Q17, Q18 MCQs + Q3 Part B (10 marks on journal writing)</p>
+      </div>
+      <div class="card card-yellow">
+        <span class="badge badge-yellow">🟡 Important</span>
+        <h3>Well-Being & Positive Psychology Basics</h3>
+        <p>Q1, Q2, Q6, Q26 MCQs – Foundation concepts, definitions, Seligman</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ ROADMAP ═══════════ -->
+  <div class="page" id="page-roadmap">
+    <div class="section-title">🗺️ Complete Study Roadmap</div>
+    <div class="exam-card">
+      <h3>📅 Suggested Study Plan (6 Days)</h3>
+      <div class="timeline">
+        <div class="timeline-item"><h4>Day 1 – Unit I + Unit II</h4><p>Introduction to Positive Psychology, Nature, Scope, Well-being, GDP→GNHI, Self-Control, Personal Goals, Self-Regulation</p></div>
+        <div class="timeline-item"><h4>Day 2 – Unit III + Unit IV</h4><p>Trait Theories (Allport, Big Five, Hippocrates), Strengths, Forgiveness, Gratitude, Resilience, Optimism, Spirituality, Meaning</p></div>
+        <div class="timeline-item"><h4>Day 3 – Unit V + Unit VI</h4><p>Causes/Measurement/Effects of Happiness, Theories, Mindfulness, Journaling, Story Writing, Meditation, Yoga, Coping</p></div>
+        <div class="timeline-item"><h4>Day 4 – MCQ Practice</h4><p>Attempt all 70+ MCQs. Identify weak areas. Revise those topics. Focus on tricky questions.</p></div>
+        <div class="timeline-item"><h4>Day 5 – Subjective Practice</h4><p>Write answers for top 15 subjective questions. Practice Allport's theory, Resilience, Journaling, Happiness measurement.</p></div>
+        <div class="timeline-item"><h4>Day 6 (Before Exam) – Rapid Revision</h4><p>Quick revision notes, top 50 keywords, top 25 definitions, memory tricks, flashcards only.</p></div>
+      </div>
+    </div>
+
+    <div class="section-title">🎯 CO-Unit Mapping</div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Course Outcome</th><th>Topic</th><th>Units</th><th>Bloom's Level</th><th>Importance</th></tr>
+        <tr><td>CO1</td><td>Nature & Scope of Positive Psychology</td><td>I</td><td>L1-L3</td><td><span class="badge badge-red">🔴 High</span></td></tr>
+        <tr><td>CO2</td><td>Perspectives on Happiness & Well-Being</td><td>V</td><td>L1-L3</td><td><span class="badge badge-red">🔴 High</span></td></tr>
+        <tr><td>CO3</td><td>Personal Goals & Self-Regulation</td><td>II</td><td>L1-L5</td><td><span class="badge badge-red">🔴 High</span></td></tr>
+        <tr><td>CO4</td><td>Gratitude & Positive Belief</td><td>III, IV</td><td>L3-L4</td><td><span class="badge badge-yellow">🟡 Med</span></td></tr>
+        <tr><td>CO5</td><td>Resilience & Optimism</td><td>IV</td><td>L5-L6</td><td><span class="badge badge-red">🔴 High</span></td></tr>
+        <tr><td>CO6</td><td>Positive Coping Strategies</td><td>VI</td><td>L4-L6</td><td><span class="badge badge-yellow">🟡 Med</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════ EXAM ANALYSIS ═══════════ -->
+  <div class="page" id="page-exam-analysis">
+    <div class="section-title">🔍 Sample Paper Deep Analysis</div>
+    <div class="exam-card">
+      <h3>📊 Topic Frequency in Sample Paper MCQs</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Topic</th><th>Questions</th><th>Frequency</th><th>Priority</th></tr>
+          <tr><td>Self-Control / Self-Regulation</td><td>Q7, Q16, Q22, Q29, Q30</td><td>5 Qs</td><td><span class="badge badge-red">🔴 Very High</span></td></tr>
+          <tr><td>Resilience</td><td>Q4, Q14, Q19, Q23</td><td>4 Qs</td><td><span class="badge badge-red">🔴 Very High</span></td></tr>
+          <tr><td>Happiness – Causes/Effects/Measurement</td><td>Q5, Q8, Q9, Q25, Q28</td><td>5 Qs</td><td><span class="badge badge-red">🔴 Very High</span></td></tr>
+          <tr><td>Personality Trait Theories</td><td>Q3, Q11, Q13, Q20</td><td>4 Qs</td><td><span class="badge badge-red">🔴 High</span></td></tr>
+          <tr><td>Well-Being (Nature/Dimensions)</td><td>Q2, Q6, Q27</td><td>3 Qs</td><td><span class="badge badge-red">🔴 High</span></td></tr>
+          <tr><td>Positive Psychology (Intro/Scope)</td><td>Q1, Q21, Q26</td><td>3 Qs</td><td><span class="badge badge-red">🔴 High</span></td></tr>
+          <tr><td>Applications (Mindfulness/Journaling)</td><td>Q15, Q17, Q18</td><td>3 Qs</td><td><span class="badge badge-yellow">🟡 Med</span></td></tr>
+          <tr><td>Strengths & Personal Growth</td><td>Q12, Q24</td><td>2 Qs</td><td><span class="badge badge-yellow">🟡 Med</span></td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="cards-grid">
+      <div class="card card-red">
+        <h3>🎯 Part B Predicted Topics</h3>
+        <ul style="font-size:13.5px;color:var(--text2);line-height:2;padding-left:16px">
+          <li>Resilience (sources, cultural differences)</li>
+          <li>Journal writing & mental health</li>
+          <li>Measurement of happiness (challenges)</li>
+          <li>Self-control depletion effects</li>
+          <li>Allport's Trait Theory (critical analysis)</li>
+        </ul>
+      </div>
+      <div class="card card-yellow">
+        <h3>⚠️ Tricky MCQ Patterns</h3>
+        <ul style="font-size:13.5px;color:var(--text2);line-height:2;padding-left:16px">
+          <li>"NOT" questions (Q2, Q4, Q13, Q28)</li>
+          <li>Best/most accurate definition Qs</li>
+          <li>Assertion-type with subtle differences</li>
+          <li>Hippocrates vs Eysenck vs Big Five</li>
+          <li>Meditation vs Journal Writing distinctions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ UNIT 1 ═══════════ -->
+  <div class="page" id="page-unit1">
+    <div class="section-title">📗 Unit I – Introduction to Positive Psychology</div>
+    <span class="badge badge-red">🔴 Very High Priority – CO1</span>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('u1','learn',this)">📖 Learn</div>
+      <div class="tab" onclick="switchTab('u1','theories',this)">🧪 Theories</div>
+      <div class="tab" onclick="switchTab('u1','memory',this)">🧠 Memory</div>
+      <div class="tab" onclick="switchTab('u1','mcq',this)">🎯 MCQs</div>
+      <div class="tab" onclick="switchTab('u1','revision',this)">⚡ Revision</div>
+    </div>
+
+    <div class="tab-content active" id="u1-learn">
+      <div class="subsection">
+        <h3>1.1 What is Positive Psychology?</h3>
+        <p><strong style="color:var(--accent)">Simple explanation:</strong> Positive Psychology is the scientific study of what makes life worth living — happiness, strengths, meaning, and flourishing. It's NOT just "think positive." It's a rigorous science.</p>
+        <p style="margin-top:10px"><strong style="color:var(--accent2)">Exam language:</strong> Positive Psychology is a branch of psychology that focuses on identifying and nurturing the strengths and virtues that enable individuals and communities to thrive. It shifts focus from pathology (what's wrong) to flourishing (what's right).</p>
+        <div class="highlight"><strong>💡 Real-life example:</strong> Traditional psychology asks "Why are you depressed?" Positive Psychology asks "What makes you happy and resilient?"</div>
+        <div class="memory"><span class="memory-icon">🎯</span><strong>Mnemonic:</strong> <strong>PERMA</strong> – Positive emotions, Engagement, Relationships, Meaning, Accomplishment (Seligman's well-being model)</div>
+
+        <h4>Who Founded Positive Psychology?</h4>
+        <div class="theory-box">
+          <h4>Martin E.P. Seligman – Father of Positive Psychology</h4>
+          <div class="theory-meta">
+            <span class="theory-tag">🏛️ Origin: 1998 APA Presidential Address</span>
+            <span class="theory-tag">📚 Key book: Authentic Happiness (2002)</span>
+            <span class="theory-tag">🎯 University of Pennsylvania</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2)">In 1998, when Seligman became president of the American Psychological Association, he called for a "new science" that would study positive human functioning. He noticed psychology was too focused on mental illness and neglect the study of human strengths.</p>
+          <div class="mnemonic"><strong>SELIGman = SEE LIGHT in people!</strong> He saw the light (positive side) in human psychology.</div>
+        </div>
+        <div class="warning">⚠️ <strong>Common Mistake:</strong> Students confuse "father of positive psychology" with Abraham Maslow or Carl Rogers. The correct answer is <strong>Martin Seligman</strong>. (Q21 in sample paper!)</div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.2 Concept, Nature, and Dimensions of Well-Being</h3>
+        <p><strong style="color:var(--accent)">Well-Being</strong> = A state of being comfortable, healthy, or happy. Multi-dimensional concept.</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Dimension</th><th>Description</th><th>Example</th></tr>
+            <tr><td>Physical Well-Being</td><td>Good health, absence of illness, vitality</td><td>Regular exercise, healthy diet</td></tr>
+            <tr><td>Psychological Well-Being</td><td>Mental health, positive emotions, meaning</td><td>Positive self-image, purpose in life</td></tr>
+            <tr><td>Social Well-Being</td><td>Quality of relationships, social integration</td><td>Strong friendships, community belonging</td></tr>
+            <tr><td>Spiritual Well-Being</td><td>Sense of meaning, values, connection to something greater</td><td>Faith, meditation, purpose</td></tr>
+            <tr><td>Economic Well-Being</td><td>Financial security and stability</td><td>Having basic needs met</td></tr>
+          </table>
+        </div>
+        <div class="warning">⚠️ <strong>Q2 Sample Paper:</strong> "Which is NOT a dimension of well-being?" Answer = (d) Material well-being. <strong>"Material" is the trick word</strong> – we say "Economic" not "Material"!</div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.3 Aims and Scope of Positive Psychology</h3>
+        <div class="cards-grid">
+          <div class="card card-blue">
+            <h3>🎯 Aims</h3>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Build positive emotions</li>
+              <li>Develop character strengths</li>
+              <li>Create positive institutions</li>
+              <li>Enhance human flourishing</li>
+              <li>Prevent mental illness proactively</li>
+            </ul>
+          </div>
+          <div class="card card-purple">
+            <h3>🌐 Scope</h3>
+            <ul style="font-size:13.5px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Individual level (emotions, traits)</li>
+              <li>Group level (relationships, families)</li>
+              <li>Societal level (institutions, culture)</li>
+              <li>Applications in education, health, business</li>
+              <li>Positive therapy and coaching</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight"><strong>Q26 Sample Paper:</strong> "Primary aim of Positive Psychology?" = <strong>(b) To enhance human strengths and virtues</strong> – NOT to diagnose illness, NOT only individual happiness.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.4 GDP vs GNHI (Gross National Happiness Index)</h3>
+        <div class="table-wrap">
+          <table class="diff-table">
+            <tr><th>GDP (Traditional)</th><th>GNHI (Positive Psychology Approach)</th></tr>
+            <tr><td>Measures economic output</td><td>Measures happiness & well-being</td></tr>
+            <tr><td>Material wealth focus</td><td>Holistic development focus</td></tr>
+            <tr><td>Ignores mental health</td><td>Includes psychological well-being</td></tr>
+            <tr><td>Country: all nations</td><td>Origin: Bhutan (1972, King Jigme)</td></tr>
+            <tr><td>Single metric</td><td>9 domains: Living standards, education, health, culture, governance, ecology, time use, psychological well-being, community vitality</td></tr>
+          </table>
+        </div>
+        <div class="memory"><strong>🌏 GNHI Story:</strong> In tiny Bhutan (Himalayan kingdom), King Jigme Singye Wangchuck in 1972 said "Gross National Happiness is more important than Gross National Product." This became the foundation of positive economics!</div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.5 Holistic Approach to Human Development</h3>
+        <p>A holistic approach considers ALL aspects of a person — physical, mental, emotional, social, spiritual — rather than reducing them to one dimension.</p>
+        <div class="highlight"><strong>Q6 Sample Paper:</strong> "Which approach emphasizes holistic perspective considering physical, emotional, and social aspects?" = <strong>(b) Positive psychology approach</strong></div>
+        <p style="margin-top:10px">Traditional medicine = <strong>Reductionist</strong> (treats one organ/symptom). Positive Psychology = <strong>Holistic</strong> (treats the whole person).</p>
+      </div>
+
+      <div class="subsection">
+        <h3>1.6 Value Crisis</h3>
+        <p>A <strong>Value Crisis</strong> occurs when individuals or society lose clarity about core values, leading to confusion, meaninglessness, and declining well-being.</p>
+        <div class="cards-grid">
+          <div class="card">
+            <h3>🔴 Causes of Value Crisis</h3>
+            <ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Rapid technological change</li>
+              <li>Cultural conflicts and globalization</li>
+              <li>Breakdown of family/community</li>
+              <li>Overemphasis on material success</li>
+              <li>Loss of spiritual/religious anchoring</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🟢 Positive Psychology's Response</h3>
+            <ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Reconnect with core personal values</li>
+              <li>Build character strengths</li>
+              <li>Find meaning and purpose</li>
+              <li>Positive institutions and culture</li>
+              <li>Gratitude and mindfulness practices</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>1.7 Perspectives on Positive Psychology</h3>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Perspective</th><th>Focus</th><th>Key Idea</th></tr>
+            <tr><td><strong>Strengths-Based</strong></td><td>Individual strengths and talents</td><td>Build on what's right, not fix what's wrong</td></tr>
+            <tr><td><strong>Cognitive-Behavioral</strong></td><td>Thoughts and behaviors</td><td>Change negative thinking patterns</td></tr>
+            <tr><td><strong>Positive Emotion</strong></td><td>Feeling good</td><td>Broaden-and-Build theory (Fredrickson)</td></tr>
+            <tr><td><strong>Existential</strong></td><td>Meaning and purpose</td><td>Viktor Frankl's logotherapy</td></tr>
+            <tr><td><strong>Humanistic</strong></td><td>Self-actualization</td><td>Maslow's hierarchy of needs</td></tr>
+          </table>
+        </div>
+        <div class="highlight"><strong>Q1 Sample Paper:</strong> "Which perspective focuses on identifying and utilizing individual strengths for personal and professional goals?" = <strong>(b) Strengths-based perspective</strong></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u1-theories">
+      <div class="theory-box">
+        <h4>Seligman's PERMA Model of Well-Being</h4>
+        <div class="theory-meta">
+          <span class="theory-tag">👤 Martin Seligman</span>
+          <span class="theory-tag">📅 2011</span>
+          <span class="theory-tag">📚 Flourish (book)</span>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Letter</th><th>Element</th><th>Meaning</th><th>Example</th></tr>
+          <tr><td><strong style="color:var(--accent)">P</strong></td><td>Positive Emotions</td><td>Joy, gratitude, hope, love</td><td>Laughing with friends</td></tr>
+          <tr><td><strong style="color:var(--accent)">E</strong></td><td>Engagement</td><td>Flow state, absorption in activity</td><td>Being "in the zone" while painting</td></tr>
+          <tr><td><strong style="color:var(--accent)">R</strong></td><td>Relationships</td><td>Positive connections with others</td><td>Deep friendships, family bonds</td></tr>
+          <tr><td><strong style="color:var(--accent)">M</strong></td><td>Meaning</td><td>Sense of purpose, belonging to something greater</td><td>Volunteering, spiritual practice</td></tr>
+          <tr><td><strong style="color:var(--accent)">A</strong></td><td>Accomplishment</td><td>Achievement, mastery, goals</td><td>Completing a degree, winning a race</td></tr>
+        </table></div>
+      </div>
+      <div class="theory-box">
+        <h4>Broaden-and-Build Theory (Barbara Fredrickson)</h4>
+        <div class="theory-meta"><span class="theory-tag">👤 Barbara Fredrickson</span><span class="theory-tag">📅 1998/2001</span></div>
+        <p style="font-size:13.5px;color:var(--text2);line-height:1.7"><strong>Core idea:</strong> Positive emotions <em>broaden</em> our awareness and thinking (we become more creative, open, and connected), which over time <em>builds</em> lasting psychological resources (resilience, social bonds, knowledge).</p>
+        <div class="highlight"><strong>Analogy:</strong> Negative emotions = tunnel vision (fight/flight). Positive emotions = wide-angle lens (explore/build).</div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u1-memory">
+      <div class="mnemonic"><strong>🔑 PERMA</strong> = <strong>P</strong>lease <strong>E</strong>njoy <strong>R</strong>eal <strong>M</strong>eaningful <strong>A</strong>chievements</div>
+      <div class="mnemonic"><strong>🌟 Seligman = "SEE LIGHT man"</strong> → He saw the bright side (positive) of psychology in 1998</div>
+      <div class="mnemonic"><strong>🏔️ GNHI = Bhutan's Happiness Mountain</strong> → Tiny country, BIG happiness philosophy. GDP counts money, GNHI counts smiles!</div>
+      <div class="mnemonic"><strong>📐 Well-Being Dimensions: PPSS</strong> = Physical, Psychological, Social, Spiritual</div>
+      <div class="memory"><strong>⚠️ "NOT" question trick:</strong> Q2 asks "NOT a dimension" → "Material" is the trap. Always check if it's "Material" vs "Economic" – Economic is correct!</div>
+    </div>
+
+    <div class="tab-content" id="u1-mcq">
+      <div class="quiz-container" id="u1-quiz"></div>
+    </div>
+
+    <div class="tab-content" id="u1-revision">
+      <div class="revision-sheet">
+        <h3>⚡ Unit I – One-Page Revision Sheet</h3>
+        <div class="rev-grid">
+          <div class="rev-item"><strong>Father of +ve Psych</strong>Martin E.P. Seligman (1998)</div>
+          <div class="rev-item"><strong>PERMA</strong>Positive emotions, Engagement, Relationships, Meaning, Accomplishment</div>
+          <div class="rev-item"><strong>GNHI Origin</strong>Bhutan, 1972, King Jigme</div>
+          <div class="rev-item"><strong>NOT a dimension</strong>Material well-being (trick Q)</div>
+          <div class="rev-item"><strong>Strengths-based perspective</strong>Uses strengths for personal/professional goals</div>
+          <div class="rev-item"><strong>Holistic approach</strong>= Positive psychology approach</div>
+          <div class="rev-item"><strong>Aim of +ve Psych</strong>Enhance human strengths & virtues</div>
+          <div class="rev-item"><strong>Broaden-and-Build</strong>Fredrickson – positive emotions widen thinking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ UNIT 2 ═══════════ -->
+  <div class="page" id="page-unit2">
+    <div class="section-title">📙 Unit II – Self Control, Regulation & Personal Goal Setting</div>
+    <span class="badge badge-red">🔴 HIGHEST Priority – CO3 – Most MCQs in Sample Paper!</span>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('u2','learn',this)">📖 Learn</div>
+      <div class="tab" onclick="switchTab('u2','memory',this)">🧠 Memory</div>
+      <div class="tab" onclick="switchTab('u2','mcq',this)">🎯 MCQs</div>
+      <div class="tab" onclick="switchTab('u2','revision',this)">⚡ Revision</div>
+    </div>
+
+    <div class="tab-content active" id="u2-learn">
+      <div class="subsection">
+        <h3>2.1 The Value of Self-Control</h3>
+        <p><strong>Simple:</strong> Self-control = your ability to pause before you act. It's like having a "stop button" in your brain.</p>
+        <p style="margin-top:8px"><strong>Exam definition:</strong> Self-control is the capacity to regulate one's thoughts, emotions, and behaviors in pursuit of long-term goals, overriding short-term impulses.</p>
+        <div class="highlight"><strong>Q30 Sample Paper:</strong> "Best defines self-control in psychology?" = <strong>(b) The ability to regulate thoughts, emotions, and behaviors in pursuit of long-term goals</strong>. NOT suppressing emotions completely!</div>
+        <div class="highlight"><strong>Q16:</strong> "Best defines self-control?" = <strong>(b) The ability to regulate impulses and behaviors in pursuit of long-term goals</strong>.</div>
+
+        <h4>🍰 The Famous Marshmallow Test (Walter Mischel, Stanford)</h4>
+        <div class="theory-box">
+          <h4>Stanford Marshmallow Experiment</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Walter Mischel</span><span class="theory-tag">📅 1960s-70s</span><span class="theory-tag">🏛️ Stanford University</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.7">Children were given one marshmallow and told they could get TWO if they waited 15 minutes. Children who waited (high self-control) showed better life outcomes: higher SAT scores, better health, lower substance abuse, more successful careers. <strong>Key finding:</strong> Self-control in childhood predicts adult success more than IQ!</p>
+          <div class="mnemonic"><strong>🍰 1 Marshmallow vs 2 Marshmallows = Short-term vs Long-term thinking!</strong></div>
+        </div>
+
+        <h4>Why is Self-Control Valuable?</h4>
+        <ul style="font-size:14px;color:var(--text2);line-height:2;padding-left:20px">
+          <li>Better academic and professional performance</li>
+          <li>Healthier relationships and behaviors</li>
+          <li>Financial stability (resist impulse buying)</li>
+          <li>Mental and physical health benefits</li>
+          <li>Greater life satisfaction and happiness</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>2.2 Self-Regulation</h3>
+        <p><strong>Self-regulation</strong> is the broader process of monitoring and managing your own behavior, emotions, and thoughts to achieve desired goals.</p>
+        <div class="table-wrap"><table class="diff-table">
+          <tr><th>Self-Control</th><th>Self-Regulation</th></tr>
+          <tr><td>Specific, willpower-based</td><td>Broader, ongoing process</td></tr>
+          <tr><td>"Stop doing X" in moment</td><td>Planning, monitoring, adjusting over time</td></tr>
+          <tr><td>Like a brake pedal</td><td>Like the entire driving system</td></tr>
+          <tr><td>Resisting temptation NOW</td><td>Setting and pursuing goals over time</td></tr>
+        </table></div>
+        <div class="highlight"><strong>Q7:</strong> "Which describes self-regulation?" = <strong>(b) It involves managing one's thoughts, feelings, and behaviors to reach goals</strong>. It's NOT innate (can be developed), NOT external only, NOT dependent on external motivation alone.</div>
+
+        <h4>Strategies for Maintaining Self-Regulation</h4>
+        <div class="cards-grid">
+          <div class="card card-blue"><h3>🎯 Visualizing Success</h3><p>Mentally picturing goal achievement activates motivation and self-regulation circuits.</p></div>
+          <div class="card card-green"><h3>📝 Implementation Intentions</h3><p>"When X happens, I will do Y" – Pre-planning specific responses to situations.</p></div>
+          <div class="card card-purple"><h3>🌊 Mindfulness</h3><p>Awareness of thoughts/impulses without acting on them automatically.</p></div>
+          <div class="card card-yellow"><h3>⚖️ Ignoring Distractions</h3><p>Creating environments that minimize temptations and distractions.</p></div>
+        </div>
+        <div class="highlight"><strong>Q22:</strong> "Which strategy is effective in maintaining self-regulation?" = <strong>(c) Visualizing success</strong>. NOT ignoring distractions (passive), NOT avoiding all risks, NOT relying only on willpower.</div>
+
+        <h4>How does self-regulation benefit personal life?</h4>
+        <div class="highlight"><strong>Q29:</strong> = <strong>(c) By improving decision-making and achieving desired outcomes</strong>. NOT by disregarding goals, NOT by reacting impulsively, NOT by avoiding self-reflection.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.3 Personal Goals and Self-Regulation</h3>
+        <p>Goals give direction to self-regulation. Without clear goals, self-regulation has no target.</p>
+
+        <h4>Types of Goals (important for exam)</h4>
+        <div class="table-wrap"><table>
+          <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+          <tr><td><strong>Approach Goals</strong></td><td>Moving toward desired outcomes</td><td>"I want to get an A"</td></tr>
+          <tr><td><strong>Avoidance Goals</strong></td><td>Moving away from undesired outcomes</td><td>"I don't want to fail"</td></tr>
+          <tr><td><strong>Mastery Goals</strong></td><td>Focused on learning and improvement</td><td>"I want to understand psychology deeply"</td></tr>
+          <tr><td><strong>Performance Goals</strong></td><td>Focused on demonstrating competence</td><td>"I want to score higher than others"</td></tr>
+          <tr><td><strong>Intrinsic Goals</strong></td><td>Internally motivated</td><td>Learning for joy of learning</td></tr>
+          <tr><td><strong>Extrinsic Goals</strong></td><td>Externally motivated</td><td>Learning for rewards/approval</td></tr>
+        </table></div>
+
+        <h4>SMART Goals Framework</h4>
+        <div class="mnemonic"><strong>S</strong>pecific | <strong>M</strong>easurable | <strong>A</strong>chievable | <strong>R</strong>elevant | <strong>T</strong>ime-bound</div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.4 Personal Goals and Well-Being</h3>
+        <p>Research shows that pursuing personally meaningful goals (not just externally imposed ones) significantly enhances well-being.</p>
+        <div class="cards-grid">
+          <div class="card card-green"><h3>✅ Goals → Well-Being</h3><p>Progress toward meaningful goals creates positive emotions, sense of purpose, and life satisfaction.</p></div>
+          <div class="card card-red"><h3>❌ When Goals Hurt Well-Being</h3><p>Goals that are too difficult, conflicting, externally imposed, or not aligned with values can cause stress and reduce well-being.</p></div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>2.5 Causes of Self-Control Failure</h3>
+        <div class="theory-box">
+          <h4>Ego Depletion Theory (Roy Baumeister)</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Roy Baumeister</span><span class="theory-tag">📅 1998</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.7">Self-control is like a <strong>muscle</strong> – it can get <strong>tired</strong>. Each act of self-control uses up a limited resource (mental energy). When depleted, self-control fails.</p>
+          <div class="highlight"><strong>Q5 Part B (Sample Paper):</strong> "How does repeatedly exerting self-control in daily life affect your ability to maintain self-control over time?" → This is about EGO DEPLETION! Self-control is a limited resource that gets depleted with use.</div>
+        </div>
+
+        <h4>Major Causes of Self-Control Failure</h4>
+        <div class="table-wrap"><table>
+          <tr><th>Cause</th><th>Explanation</th><th>Example</th></tr>
+          <tr><td>Ego Depletion</td><td>Willpower runs out after multiple uses</td><td>Eating junk food at night after a stressful day</td></tr>
+          <tr><td>Stress & Negative Emotions</td><td>Emotional distress hijacks rational thinking</td><td>Stress-eating, emotional shopping</td></tr>
+          <tr><td>Temptation & Cues</td><td>Environmental triggers override intentions</td><td>Seeing food ads when trying to diet</td></tr>
+          <tr><td>Impulsivity</td><td>Acting on immediate desires without reflection</td><td>Impulse buying</td></tr>
+          <tr><td>Conflicting Goals</td><td>Multiple goals compete for attention</td><td>Wanting to study AND watch Netflix</td></tr>
+          <tr><td>Low Motivation</td><td>Goals not personally meaningful</td><td>Studying only because parents want it</td></tr>
+          <tr><td>Poor Planning</td><td>No strategy for temptation</td><td>Not removing distractions before studying</td></tr>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u2-memory">
+      <div class="mnemonic"><strong>🍰 Self-Control Mnemonic: MARSHMALLOW</strong><br>Mischel · Ability to Resist · Short-term impulses · Hold for · More reward · A long time · Long-term goals · Love your future self · Outcomes are better · Wait patiently</div>
+      <div class="mnemonic"><strong>⚙️ Self-Regulation vs Self-Control</strong><br>"Self-REGULATION = REGULATING an entire system (ongoing)"<br>"Self-CONTROL = CONTROLLING one moment (specific)"<br>Like a CAR: Regulation = entire engine management; Control = pressing the brake once</div>
+      <div class="mnemonic"><strong>🔋 Ego Depletion = Battery Theory</strong><br>Every act of willpower = -10% battery. When battery = 0%, self-control fails! Recharge with: sleep, glucose, rest, positive emotions.</div>
+      <div class="mnemonic"><strong>SMART Goals = S.M.A.R.T.</strong><br><strong>S</strong>uper <strong>M</strong>easurable <strong>A</strong>nd <strong>R</strong>ealistic <strong>T</strong>argets</div>
+    </div>
+
+    <div class="tab-content" id="u2-mcq">
+      <div class="quiz-container" id="u2-quiz"></div>
+    </div>
+
+    <div class="tab-content" id="u2-revision">
+      <div class="revision-sheet">
+        <h3>⚡ Unit II – One-Page Revision Sheet</h3>
+        <div class="rev-grid">
+          <div class="rev-item"><strong>Self-Control definition</strong>Regulate thoughts/emotions/behaviors for long-term goals</div>
+          <div class="rev-item"><strong>Marshmallow Test</strong>Walter Mischel, Stanford – delay gratification → better outcomes</div>
+          <div class="rev-item"><strong>Ego Depletion</strong>Roy Baumeister – willpower is a limited, depletable resource</div>
+          <div class="rev-item"><strong>Self-Regulation Strategy</strong>Visualizing success (Q22 answer)</div>
+          <div class="rev-item"><strong>Self-regulation benefit</strong>Improving decision-making & achieving outcomes (Q29)</div>
+          <div class="rev-item"><strong>Self-regulation ≠ innate</strong>It CAN be developed (Q7)</div>
+          <div class="rev-item"><strong>Goals → Well-being</strong>Personally meaningful goals enhance well-being</div>
+          <div class="rev-item"><strong>SMART Goals</strong>Specific, Measurable, Achievable, Relevant, Time-bound</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ UNIT 3 ═══════════ -->
+  <div class="page" id="page-unit3">
+    <div class="section-title">📕 Unit III – Positive Traits</div>
+    <span class="badge badge-red">🔴 Very High Priority – CO4, CO1 – Big Five + Allport in Part B!</span>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('u3','learn',this)">📖 Learn</div>
+      <div class="tab" onclick="switchTab('u3','theories',this)">🧪 Theories</div>
+      <div class="tab" onclick="switchTab('u3','memory',this)">🧠 Memory</div>
+      <div class="tab" onclick="switchTab('u3','mcq',this)">🎯 MCQs</div>
+      <div class="tab" onclick="switchTab('u3','revision',this)">⚡ Revision</div>
+    </div>
+
+    <div class="tab-content active" id="u3-learn">
+      <div class="subsection">
+        <h3>3.1 What is a Trait?</h3>
+        <p><strong>Simple:</strong> A trait is a consistent pattern of thinking, feeling, or behaving that makes you uniquely "you."</p>
+        <p><strong>Exam definition:</strong> A trait is a relatively stable and enduring characteristic of an individual that influences behavior across diverse situations. Traits are dispositional tendencies that differentiate individuals from one another.</p>
+        <div class="highlight">Example: If you're consistently curious in new situations, helpful to strangers, and love learning new things → your trait is "Openness to Experience"</div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.2 Trait Theories of Personality</h3>
+
+        <div class="theory-box">
+          <h4>1. Hippocrates' Four Temperaments (Ancient Greece, ~400 BC)</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Hippocrates</span><span class="theory-tag">📅 ~400 BC</span><span class="theory-tag">⚕️ Medical theory of humors</span></div>
+          <div class="table-wrap"><table>
+            <tr><th>Temperament</th><th>Humor (Body Fluid)</th><th>Personality</th><th>Emotion</th></tr>
+            <tr><td><strong style="color:var(--red)">Choleric</strong></td><td>Yellow Bile</td><td>Energetic, ambitious, aggressive</td><td>Anger</td></tr>
+            <tr><td><strong style="color:var(--text2)">Melancholic</strong></td><td>Black Bile</td><td>Thoughtful, sad, analytical</td><td>Sadness</td></tr>
+            <tr><td><strong style="color:var(--green)">Sanguine</strong></td><td>Blood</td><td>Cheerful, optimistic, social</td><td>Joy</td></tr>
+            <tr><td><strong style="color:var(--accent2)">Phlegmatic</strong></td><td>Phlegm</td><td>Calm, relaxed, peaceful</td><td>Acceptance</td></tr>
+          </table></div>
+          <div class="mnemonic"><strong>🩸 Mnemonic: "Can My Salty Phlegm"</strong> = Choleric, Melancholic, Sanguine, Phlegmatic</div>
+          <div class="warning">⚠️ <strong>Q3 Sample Paper:</strong> "Who proposed theory of 4 temperaments – choleric, melancholic, sanguine, phlegmatic?" = <strong>(c) Hippocrates</strong>. NOT Hans Eysenck (he had different model), NOT Sheldon (body types), NOT Skinner (behaviorist)!</div>
+        </div>
+
+        <div class="theory-box">
+          <h4>2. Allport's Trait Theory (Gordon Allport, 1936)</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Gordon Allport</span><span class="theory-tag">📅 1936</span><span class="theory-tag">📚 Personality: A Psychological Interpretation</span></div>
+          <p style="font-size:13.5px;color:var(--text2);margin-bottom:12px">Allport was one of the first to study personality traits scientifically. He identified <strong>18,000 personality-describing words</strong> in the dictionary and organized them into a hierarchical structure.</p>
+          <div class="table-wrap"><table>
+            <tr><th>Type of Trait</th><th>Description</th><th>Example</th><th>Frequency</th></tr>
+            <tr><td><strong style="color:var(--red)">Cardinal Traits</strong></td><td>Dominant trait that shapes entire personality; person is known for it</td><td>Mother Teresa = Compassion; Hitler = Cruelty</td><td>Very rare; few people have them</td></tr>
+            <tr><td><strong style="color:var(--gold)">Central Traits</strong></td><td>General characteristics that form core personality; people describe you by these</td><td>Honest, kind, intelligent, shy</td><td>5–10 per person (most common)</td></tr>
+            <tr><td><strong style="color:var(--green)">Secondary Traits</strong></td><td>Specific preferences, attitudes; less consistent, appear only in certain situations</td><td>Gets nervous in exams; prefers Indian food</td><td>Many; situationally specific</td></tr>
+          </table></div>
+          <div class="mnemonic"><strong>🏆 CCS Mnemonic = "Champions (Cardinal) → Coaches (Central) → Supporters (Secondary)"</strong><br>Champion = ONE defining trait (rare). Coach = CORE personality traits (5-10). Supporter = SITUATIONAL preferences (many).</div>
+          <div class="highlight"><strong>Q6 Part B (Sample Paper):</strong> "Explain critically Allport's trait theory of personality" – This is a FULL 10-mark question! Must know Cardinal, Central, Secondary + Criticisms!</div>
+
+          <h4>Criticisms of Allport's Theory</h4>
+          <ul style="font-size:13.5px;color:var(--text2);line-height:2;padding-left:20px">
+            <li>Too descriptive, not explanatory (tells WHAT but not WHY)</li>
+            <li>Relies heavily on dictionary terms (cultural bias)</li>
+            <li>Does not explain how traits develop (ignores childhood)</li>
+            <li>Ignores situational factors (same person behaves differently in different situations)</li>
+            <li>Cardinal traits are too vague and rare to be scientifically useful</li>
+            <li>Later researchers (Cattell, Eysenck, Big Five) built on his work but reduced traits significantly</li>
+          </ul>
+        </div>
+
+        <div class="theory-box">
+          <h4>3. The Big Five (OCEAN) – Costa & McCrae</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Costa & McCrae</span><span class="theory-tag">📅 1992</span><span class="theory-tag">Also called: Five-Factor Model (FFM)</span></div>
+          <div class="table-wrap"><table>
+            <tr><th>Trait</th><th>High Score</th><th>Low Score</th></tr>
+            <tr><td><strong style="color:var(--purple)">O</strong>penness</td><td>Creative, curious, adventurous</td><td>Conventional, practical, cautious</td></tr>
+            <tr><td><strong style="color:var(--accent2)">C</strong>onscientiousness</td><td>Organized, reliable, disciplined</td><td>Careless, disorganized, impulsive</td></tr>
+            <tr><td><strong style="color:var(--green)">E</strong>xtraversion</td><td>Sociable, talkative, assertive</td><td>Introverted, reserved, quiet</td></tr>
+            <tr><td><strong style="color:var(--accent)">A</strong>greeableness</td><td>Cooperative, trusting, kind</td><td>Competitive, suspicious, unkind</td></tr>
+            <tr><td><strong style="color:var(--gold)">N</strong>euroticism</td><td>Anxious, moody, insecure</td><td>Emotionally stable, calm, secure</td></tr>
+          </table></div>
+          <div class="mnemonic"><strong>🌊 OCEAN</strong> = <strong>O</strong>pen <strong>C</strong>areful <strong>E</strong>nergetic <strong>A</strong>greeable <strong>N</strong>euroticism<br>Think of floating in the OCEAN – 5 dimensions of your personality float there!</div>
+          <div class="warning">⚠️ <strong>Q13 Sample Paper:</strong> "Big Five includes all EXCEPT?" = <strong>(b) Honesty-humility</strong>. Honesty-humility is part of HEXACO model (6 factors), NOT Big Five! Big Five = OCEAN only.</div>
+          <div class="warning">⚠️ <strong>Q20:</strong> "Which trait theory emphasizes 5 core dimensions = Big Five?" = <strong>(d) Costa and McCrae's Five-Factor Model</strong>. Eysenck had 3 dimensions (PEN), Allport had 3 levels, Cattell had 16 factors.</div>
+        </div>
+
+        <div class="theory-box">
+          <h4>4. Eysenck's PEN Model</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Hans Eysenck</span><span class="theory-tag">📅 1947</span></div>
+          <div class="table-wrap"><table>
+            <tr><th>Dimension</th><th>Poles</th></tr>
+            <tr><td>Psychoticism (P)</td><td>Empathic ↔ Aggressive/Impulsive</td></tr>
+            <tr><td>Extraversion (E)</td><td>Introvert ↔ Extravert</td></tr>
+            <tr><td>Neuroticism (N)</td><td>Stable ↔ Neurotic</td></tr>
+          </table></div>
+          <div class="mnemonic"><strong>PEN = Write your personality with a PEN!</strong> P=Psychoticism, E=Extraversion, N=Neuroticism</div>
+        </div>
+
+        <div class="theory-box">
+          <h4>Trait Theories – According to Q11 (Sample Paper)</h4>
+          <p style="font-size:13.5px;color:var(--text2)"><strong>Q11:</strong> "According to trait theories, individuals differ in levels of specific traits due to?" = <strong>(b) Genetic and environmental factors</strong>. Traits are shaped by BOTH nature (genetics) AND nurture (environment). NOT current mood, NOT age alone, NOT random chance!</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.3 Personal Strengths</h3>
+        <p>Strengths are positive traits that lead to positive outcomes. Positive Psychology focuses on <strong>identifying and building</strong> these strengths.</p>
+
+        <div class="theory-box">
+          <h4>VIA Classification of Character Strengths (Seligman & Peterson, 2004)</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Seligman & Peterson</span><span class="theory-tag">📅 2004</span></div>
+          <p style="font-size:13.5px;color:var(--text2)">24 character strengths organized under 6 virtues: Wisdom, Courage, Humanity, Justice, Temperance, Transcendence.</p>
+        </div>
+
+        <div class="highlight"><strong>Q12 Sample Paper:</strong> "Best evaluates impact of personal strengths on success?" = <strong>(b) Personal strengths like resilience and adaptability are key factors in long-term success</strong>. Intelligence alone ≠ success. External opportunities alone ≠ success.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.4 Forgiveness</h3>
+        <p><strong>Forgiveness</strong> = A voluntary process of replacing negative feelings (resentment, anger, revenge) toward someone who harmed you with positive or neutral feelings. It is for YOUR well-being, not about condoning the harmful act.</p>
+        <div class="cards-grid">
+          <div class="card card-green">
+            <h3>✅ Benefits of Forgiveness</h3>
+            <ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Reduces stress and anxiety</li>
+              <li>Lowers blood pressure</li>
+              <li>Improves heart health</li>
+              <li>Enhances psychological well-being</li>
+              <li>Strengthens relationships</li>
+            </ul>
+          </div>
+          <div class="card card-red">
+            <h3>❌ Forgiveness ≠</h3>
+            <ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Forgetting the harm</li>
+              <li>Condoning the behavior</li>
+              <li>Reconciliation</li>
+              <li>Weakness</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.5 Gratitude</h3>
+        <p><strong>Gratitude</strong> = Recognition and appreciation of positive things in life. A powerful positive psychology intervention.</p>
+        <div class="theory-box">
+          <h4>Robert Emmons' Gratitude Research</h4>
+          <p style="font-size:13.5px;color:var(--text2)">People who wrote "gratitude journals" (3 things they were grateful for each day) showed: higher positive emotions, better sleep, more compassion, more life satisfaction, reduced envy and depression.</p>
+        </div>
+        <div class="mnemonic"><strong>🙏 3 Good Things Exercise</strong> = Every night write 3 good things that happened. Even on bad days, you can always find 3. This rewires the brain for positivity!</div>
+      </div>
+
+      <div class="subsection">
+        <h3>3.6 Positive Belief</h3>
+        <p>Positive beliefs are constructive, growth-oriented thoughts about oneself and the world. They include self-efficacy (Bandura), optimism, and hope.</p>
+        <div class="highlight"><strong>Self-efficacy</strong> (Albert Bandura) = Belief in your own ability to succeed. "I CAN do this." People with high self-efficacy take on challenges, persist longer, recover faster from failures.</div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u3-theories">
+      <div class="table-wrap"><table>
+        <tr><th>Theorist</th><th>Theory</th><th>Key Contribution</th><th>No. of Traits/Factors</th></tr>
+        <tr><td>Hippocrates (~400 BC)</td><td>Four Temperaments</td><td>First biological approach to personality</td><td>4 temperaments</td></tr>
+        <tr><td>Gordon Allport (1936)</td><td>Trait Theory</td><td>Cardinal/Central/Secondary traits; lexical approach</td><td>18,000 → 3 levels</td></tr>
+        <tr><td>Raymond Cattell (1943)</td><td>16 PF (Personality Factors)</td><td>Factor analysis of Allport's 18,000 words → 16 factors</td><td>16 factors</td></tr>
+        <tr><td>Hans Eysenck (1947)</td><td>PEN Model</td><td>Biological basis of 3 dimensions</td><td>3 dimensions</td></tr>
+        <tr><td>Costa & McCrae (1992)</td><td>Big Five / FFM</td><td>OCEAN – most researched and validated model</td><td>5 factors</td></tr>
+        <tr><td>Peterson & Seligman (2004)</td><td>VIA Strengths</td><td>24 character strengths under 6 virtues</td><td>24 strengths</td></tr>
+      </table></div>
+    </div>
+
+    <div class="tab-content" id="u3-memory">
+      <div class="mnemonic"><strong>🌊 OCEAN = Big Five (Costa & McCrae)</strong><br>Openness · Conscientiousness · Extraversion · Agreeableness · Neuroticism</div>
+      <div class="mnemonic"><strong>🏆 Allport's CCS Levels</strong><br><strong>C</strong>ardinal = Celebrity-level ONE defining trait (RARE)<br><strong>C</strong>entral = Core description words (5-10, COMMON)<br><strong>S</strong>econdary = Situational preferences (MANY, SPECIFIC)</div>
+      <div class="mnemonic"><strong>🩸 Hippocrates' 4 Temperaments: "Can My Sweater Please"</strong><br><strong>C</strong>holeric · <strong>M</strong>elancholic · <strong>S</strong>anguine · <strong>P</strong>hlegmatic</div>
+      <div class="mnemonic"><strong>🖊️ Eysenck = PEN</strong><br>P=Psychoticism · E=Extraversion · N=Neuroticism<br>"Write your personality with a PEN"</div>
+      <div class="warning">⚠️ TRICK: Q13 – "Big Five EXCEPT?" → Answer = Honesty-humility (that's HEXACO, not Big Five)</div>
+    </div>
+
+    <div class="tab-content" id="u3-mcq">
+      <div class="quiz-container" id="u3-quiz"></div>
+    </div>
+
+    <div class="tab-content" id="u3-revision">
+      <div class="revision-sheet">
+        <h3>⚡ Unit III – One-Page Revision Sheet</h3>
+        <div class="rev-grid">
+          <div class="rev-item"><strong>Hippocrates (4 temp.)</strong>Choleric, Melancholic, Sanguine, Phlegmatic (Q3!)</div>
+          <div class="rev-item"><strong>Big Five = OCEAN</strong>Costa & McCrae – NOT Eysenck, NOT Allport (Q20!)</div>
+          <div class="rev-item"><strong>Big Five EXCEPT</strong>Honesty-humility → that's HEXACO (Q13!)</div>
+          <div class="rev-item"><strong>Allport: Cardinal</strong>ONE dominant trait, defines whole personality (rare)</div>
+          <div class="rev-item"><strong>Allport: Central</strong>Core traits (5-10), most described</div>
+          <div class="rev-item"><strong>Allport: Secondary</strong>Situational, specific preferences</div>
+          <div class="rev-item"><strong>Trait differences</strong>Due to genetic AND environmental factors (Q11)</div>
+          <div class="rev-item"><strong>Gratitude research</strong>Robert Emmons – gratitude journal → well-being</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ UNIT 4 ═══════════ -->
+  <div class="page" id="page-unit4">
+    <div class="section-title">📘 Unit IV – Positive Cognitive States & Processes</div>
+    <span class="badge badge-red">🔴 Very High Priority – CO5 – Resilience is Part B Q2 (10 marks)!</span>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('u4','learn',this)">📖 Learn</div>
+      <div class="tab" onclick="switchTab('u4','memory',this)">🧠 Memory</div>
+      <div class="tab" onclick="switchTab('u4','mcq',this)">🎯 MCQs</div>
+      <div class="tab" onclick="switchTab('u4','revision',this)">⚡ Revision</div>
+    </div>
+
+    <div class="tab-content active" id="u4-learn">
+      <div class="subsection">
+        <h3>4.1 Resilience – The Core Concept</h3>
+        <p><strong>Simple:</strong> Resilience = "Bouncing back" from hardship. Like a rubber ball – the harder it hits the ground, the higher it bounces!</p>
+        <p style="margin-top:8px"><strong>Exam definition:</strong> Resilience is the capacity to adapt positively in the face of adversity, trauma, tragedy, threats, or significant sources of stress.</p>
+        <div class="highlight"><strong>Q14 Sample Paper:</strong> "Term for ability to adapt positively in face of adversity, trauma?" = <strong>(a) Resilience</strong>. NOT fragility (opposite), NOT avoidance (running away), NOT conformity (just fitting in).</div>
+        <div class="highlight"><strong>Q19:</strong> "What is resilience?" = <strong>(b) The ability to bounce back from adversity</strong>. NOT ignoring problems, NOT dwelling on negatives, NOT inability to cope.</div>
+
+        <h4>Characteristics of a Resilient Person</h4>
+        <div class="cards-grid">
+          <div class="card card-green">
+            <h3>✅ Resilient Person</h3>
+            <ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Flexible and adaptable</li>
+              <li>Accepts setbacks as part of growth</li>
+              <li>Maintains positive outlook despite challenges</li>
+              <li>Uses effective coping strategies</li>
+              <li>Has strong social support</li>
+              <li>Finds meaning in difficulties</li>
+            </ul>
+          </div>
+          <div class="card card-red">
+            <h3>❌ NOT Resilient</h3>
+            <ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px">
+              <li>Fixed and unchanging view of oneself</li>
+              <li>Avoids challenges</li>
+              <li>Blames others for problems</li>
+              <li>Remains passive in difficulties</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight"><strong>Q4:</strong> "NOT typically associated with resilient mindset?" = <strong>(b) A fixed and unchanging view of oneself</strong> – Resilience requires GROWTH mindset, not fixed mindset!</div>
+        <div class="highlight"><strong>Q23:</strong> "Resilient person is most likely to?" = <strong>(b) Accept setbacks as part of growth</strong>.</div>
+
+        <h4>Sources of Resilience</h4>
+        <div class="table-wrap"><table>
+          <tr><th>Category</th><th>Sources</th><th>Example</th></tr>
+          <tr><td>Individual Factors</td><td>Positive self-concept, emotional regulation, problem-solving, optimism</td><td>Believing in yourself, managing anger</td></tr>
+          <tr><td>Social/Relational Factors</td><td>Strong social support, positive relationships, community ties</td><td>Family support, good friends</td></tr>
+          <tr><td>Community Factors</td><td>Access to resources, education, healthcare</td><td>Good schools, community centers</td></tr>
+          <tr><td>Cultural Factors</td><td>Cultural beliefs, spiritual practices, traditions</td><td>Religious faith, cultural identity</td></tr>
+          <tr><td>Socioeconomic Factors</td><td>Financial stability, employment, housing</td><td>Job security, stable home</td></tr>
+        </table></div>
+        <div class="highlight"><strong>Q2 Part B (Sample Paper):</strong> "Create theoretical framework for sources of resilience across cultural and socioeconomic backgrounds. How do these differ? Implications for interventions?" → Answer needs: individual + social + cultural + economic factors; note differences (e.g., collectivist cultures use family/community more; lower SES may have fewer resources but stronger community bonds).</div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.2 Optimism</h3>
+        <p><strong>Optimism</strong> = A positive explanatory style – explaining good events as permanent, pervasive, personal; and bad events as temporary, specific, external.</p>
+
+        <div class="theory-box">
+          <h4>Seligman's Explanatory Style (Learned Optimism)</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Martin Seligman</span><span class="theory-tag">📅 1990</span></div>
+          <div class="table-wrap"><table>
+            <tr><th>Dimension</th><th>Pessimist</th><th>Optimist</th></tr>
+            <tr><td>Permanence</td><td>"This will always happen"</td><td>"This is temporary"</td></tr>
+            <tr><td>Pervasiveness</td><td>"Everything is ruined"</td><td>"Just this one area"</td></tr>
+            <tr><td>Personalization</td><td>"It's all my fault"</td><td>"Circumstances caused this"</td></tr>
+          </table></div>
+          <div class="mnemonic"><strong>3Ps of Optimism: Permanent | Pervasive | Personal</strong><br>Optimists say "good things are permanent, pervasive, personal" and "bad things are temporary, specific, external"</div>
+        </div>
+
+        <div class="theory-box">
+          <h4>Learned Helplessness vs Learned Optimism</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Martin Seligman</span></div>
+          <p style="font-size:13.5px;color:var(--text2)"><strong>Learned Helplessness:</strong> When repeated uncontrollable events teach a person/animal that their actions don't matter → they stop trying even when they could succeed. (Original experiment: dogs given unavoidable shocks stopped trying to escape even when escape became possible)</p>
+          <p style="font-size:13.5px;color:var(--text2);margin-top:8px"><strong>Learned Optimism:</strong> The antidote! Training people to challenge pessimistic thoughts and develop optimistic explanatory style.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.3 Meaning and Its Nature</h3>
+        <p><strong>Meaning</strong> = A sense that one's life matters, has purpose, and is significant. One of the most powerful predictors of well-being.</p>
+        <div class="highlight"><strong>Q24:</strong> "Best describes a person who has found deep sense of meaning in life?" = <strong>(c) They have a coherent sense of purpose and direction</strong>. NOT swayed by external pressures, NOT focused only on short-term pleasures, NOT avoiding commitments.</div>
+
+        <div class="theory-box">
+          <h4>Viktor Frankl's Logotherapy</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Viktor Frankl</span><span class="theory-tag">📅 1946</span><span class="theory-tag">📚 Man's Search for Meaning</span></div>
+          <p style="font-size:13.5px;color:var(--text2)">Holocaust survivor who developed Logotherapy – the idea that the primary human drive is not pleasure (Freud) or power (Adler), but the <strong>search for meaning</strong>. Even in extreme suffering, humans can find meaning.</p>
+          <p style="font-size:13.5px;color:var(--text2);margin-top:8px">Three ways to find meaning: <strong>1) Creating work/deeds</strong> | <strong>2) Experiencing/loving</strong> | <strong>3) Suffering with dignity</strong></p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>4.4 Spirituality and the Search for Meaning</h3>
+        <p><strong>Spirituality</strong> = A sense of connection to something greater than oneself – may or may not involve organized religion. Includes values, purpose, transcendence, inner peace.</p>
+        <div class="highlight"><strong>Q27:</strong> "How can spirituality be applied to enhance personal well-being?" = <strong>(a) By reflecting on personal values and seeking a deeper sense of purpose</strong>. NOT only religious practices, NOT avoiding challenges, NOT pursuing material goals.</div>
+        <div class="table-wrap"><table>
+          <tr><th>Spirituality</th><th>Religion</th></tr>
+          <tr><td>Personal, individual experience</td><td>Organized, institutional framework</td></tr>
+          <tr><td>About meaning & connection</td><td>About doctrine & ritual</td></tr>
+          <tr><td>Can exist without religion</td><td>Often but not always includes spirituality</td></tr>
+          <tr><td>Example: Meditation, nature connection</td><td>Example: Going to church/temple/mosque</td></tr>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u4-memory">
+      <div class="mnemonic"><strong>🏀 Resilience = Rubber Ball Theory</strong><br>The harder a rubber ball hits the floor, the HIGHER it bounces! Resilient people use adversity as fuel for growth.</div>
+      <div class="mnemonic"><strong>🌤️ Optimism 3Ps:</strong><br>"GOOD things: Permanent, Pervasive, Personal (PPP)"<br>"BAD things: Temporary, Specific, External (TSE)"<br>Good = PPP | Bad = TSE</div>
+      <div class="mnemonic"><strong>🕯️ Viktor Frankl = "Find Light IN Darkness"</strong><br>Survived HOLOCAUST and still found meaning → If HE can find meaning in a concentration camp, ANYONE can!</div>
+      <div class="mnemonic"><strong>Resilience sources: ISCCE</strong><br>Individual · Social · Community · Cultural · Economic</div>
+    </div>
+
+    <div class="tab-content" id="u4-mcq">
+      <div class="quiz-container" id="u4-quiz"></div>
+    </div>
+
+    <div class="tab-content" id="u4-revision">
+      <div class="revision-sheet">
+        <h3>⚡ Unit IV – One-Page Revision Sheet</h3>
+        <div class="rev-grid">
+          <div class="rev-item"><strong>Resilience definition</strong>Adapt positively to adversity/trauma (Q14, Q19)</div>
+          <div class="rev-item"><strong>NOT resilient mindset</strong>Fixed & unchanging view of oneself (Q4)</div>
+          <div class="rev-item"><strong>Resilient person does</strong>Accept setbacks as part of growth (Q23)</div>
+          <div class="rev-item"><strong>Optimism 3Ps</strong>Good = Permanent, Pervasive, Personal</div>
+          <div class="rev-item"><strong>Learned Helplessness</strong>Seligman – uncontrollable events → give up</div>
+          <div class="rev-item"><strong>Viktor Frankl</strong>Logotherapy – search for meaning as primary drive</div>
+          <div class="rev-item"><strong>Meaning in life</strong>Coherent sense of purpose & direction (Q24)</div>
+          <div class="rev-item"><strong>Spirituality</strong>Reflecting on values + seeking deeper purpose (Q27)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ UNIT 5 ═══════════ -->
+  <div class="page" id="page-unit5">
+    <div class="section-title">📒 Unit V – Perspectives on Happiness & Well-Being</div>
+    <span class="badge badge-red">🔴 High Priority – CO2 – Measurement of Happiness is Part B Q4!</span>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('u5','learn',this)">📖 Learn</div>
+      <div class="tab" onclick="switchTab('u5','theories',this)">🧪 Theories</div>
+      <div class="tab" onclick="switchTab('u5','memory',this)">🧠 Memory</div>
+      <div class="tab" onclick="switchTab('u5','mcq',this)">🎯 MCQs</div>
+      <div class="tab" onclick="switchTab('u5','revision',this)">⚡ Revision</div>
+    </div>
+
+    <div class="tab-content active" id="u5-learn">
+      <div class="subsection">
+        <h3>5.1 Causes of Happiness</h3>
+        <div class="theory-box">
+          <h4>Sonja Lyubomirsky's Happiness "Pie Chart"</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 Sonja Lyubomirsky</span><span class="theory-tag">📅 2005</span></div>
+          <div class="table-wrap"><table>
+            <tr><th>Factor</th><th>Contribution to Happiness</th><th>Implication</th></tr>
+            <tr><td>Genetic Set Point</td><td>~50%</td><td>Some happiness is inherited (hard to change)</td></tr>
+            <tr><td>Life Circumstances</td><td>~10%</td><td>Circumstances (income, location) matter LESS than we think!</td></tr>
+            <tr><td>Intentional Activities</td><td>~40%</td><td>What we DO matters most! (Exercise, gratitude, kindness)</td></tr>
+          </table></div>
+          <div class="mnemonic"><strong>50-10-40 Rule:</strong> Genes (50%) + Circumstances (10%) + Actions (40%)<br>Focus on the 40%! You can't change genes, circumstances matter little – but YOUR ACTIONS change 40% of your happiness!</div>
+        </div>
+
+        <h4>Key Causes of Happiness</h4>
+        <div class="cards-grid">
+          <div class="card card-red"><h3>🔴 Strong Causes</h3><ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px"><li>Social relationships & support</li><li>Physical health & exercise</li><li>Meaningful work & purpose</li><li>Positive emotions & gratitude</li></ul></div>
+          <div class="card card-yellow"><h3>🟡 Weak Causes</h3><ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px"><li>Income (after basic needs)</li><li>Material possessions</li><li>Achievement alone</li><li>Living circumstances</li></ul></div>
+        </div>
+        <div class="highlight"><strong>Q5:</strong> "What most strongly influences long-term happiness?" = <strong>(b) Social relationships are essential for emotional support and well-being</strong>. Regular income ≠ permanent happiness. Material wealth ≠ guarantee. Academic success alone ≠ happy.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>5.2 Measuring Happiness</h3>
+        <div class="table-wrap"><table>
+          <tr><th>Method</th><th>Description</th><th>Limitation</th></tr>
+          <tr><td>Self-Report Surveys</td><td>SWLS (Satisfaction with Life Scale), PANAS</td><td>Subjective bias, mood effects</td></tr>
+          <tr><td>Experience Sampling</td><td>Random prompts to record current feelings</td><td>Intrusive, burden</td></tr>
+          <tr><td>Day Reconstruction Method</td><td>Recall previous day emotions hour by hour</td><td>Memory distortions</td></tr>
+          <tr><td>Biological Measures</td><td>Brain scans, cortisol, heart rate</td><td>Expensive, doesn't capture subjective experience</td></tr>
+          <tr><td>National Surveys</td><td>World Happiness Report, Gallup surveys</td><td>Cross-cultural validity issues</td></tr>
+        </table></div>
+        <div class="highlight"><strong>Q25:</strong> "Limitation of measuring happiness through self-report surveys?" = <strong>(b) They can be influenced by temporary mood states or biases</strong>.</div>
+        <div class="highlight"><strong>Q28:</strong> "Which is NOT a common measure of happiness?" = <strong>(b) Income level</strong>. Life satisfaction (SWLS), positive affect (PANAS), social relationships ARE measures. Income is a correlate/predictor, not a direct measure tool!</div>
+
+        <div class="highlight"><strong>Q4 Part B (Sample Paper):</strong> "How has measurement of happiness evolved? Challenges in quantifying subjective concept?" → Cover: early hedonism → Aristotle's eudaimonia → modern SWLS, PANAS, World Happiness Report; Challenges: subjectivity, cultural differences, mood effects, complexity of happiness concept.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>5.3 Effects of Happiness on Well-Being</h3>
+        <div class="cards-grid">
+          <div class="card card-green"><h3>🧠 Mental Health</h3><p>Reduces depression/anxiety. Builds psychological resilience. Enhances creativity and problem-solving.</p></div>
+          <div class="card card-blue"><h3>💪 Physical Health</h3><p>Boosts immune system. Reduces stress hormones. Longer lifespan. Lower blood pressure.</p></div>
+          <div class="card card-purple"><h3>👥 Social Life</h3><p>Better relationships. More prosocial behavior. Greater cooperation and trust.</p></div>
+          <div class="card card-yellow"><h3>💼 Work/Performance</h3><p>Higher productivity. Better decision-making. More creative thinking. Higher success rates.</p></div>
+        </div>
+        <div class="highlight"><strong>Q8:</strong> "How does happiness typically affect overall well-being?" = <strong>(c) It is positively correlated with better mental and physical health</strong>. NOT no impact, NOT lower satisfaction, NOT increased stress!</div>
+      </div>
+
+      <div class="subsection">
+        <h3>5.4 Measures and Correlates of Happiness</h3>
+        <div class="highlight"><strong>Q9:</strong> "Measures and correlates of happiness often include?" = <strong>(b) Positive emotions, life satisfaction, and social support</strong>. NOT negative emotions/pessimism, NOT isolation, NOT ignoring personal goals!</div>
+        <div class="table-wrap"><table>
+          <tr><th>Key Correlate</th><th>Relationship to Happiness</th></tr>
+          <tr><td>Strong social relationships</td><td>Strongest predictor of happiness</td></tr>
+          <tr><td>Life satisfaction</td><td>Cognitive component of happiness</td></tr>
+          <tr><td>Positive emotions</td><td>Affective component of happiness</td></tr>
+          <tr><td>Autonomy & personal control</td><td>Strongly positively correlated</td></tr>
+          <tr><td>Income above poverty line</td><td>Moderate correlation (diminishing returns)</td></tr>
+          <tr><td>Physical health</td><td>Bidirectional relationship</td></tr>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u5-theories">
+      <div class="theory-box">
+        <h4>Theories of Happiness</h4>
+        <div class="table-wrap"><table>
+          <tr><th>Theory</th><th>Theorist</th><th>Key Idea</th></tr>
+          <tr><td>Hedonism</td><td>Ancient Greek philosophers</td><td>Happiness = maximizing pleasure, minimizing pain</td></tr>
+          <tr><td>Eudaimonia</td><td>Aristotle</td><td>Happiness = living virtuously, fulfilling potential (flourishing)</td></tr>
+          <tr><td>Set Point Theory</td><td>Brickman & Campbell (1971)</td><td>Happiness returns to a genetic baseline after +/- events</td></tr>
+          <tr><td>Flow Theory</td><td>Csikszentmihalyi (1990)</td><td>Happiness = complete absorption in challenging activities</td></tr>
+          <tr><td>Authentic Happiness</td><td>Seligman (2002)</td><td>3 paths: Pleasant life + Good life + Meaningful life</td></tr>
+          <tr><td>PERMA Model</td><td>Seligman (2011)</td><td>Flourishing = P+E+R+M+A</td></tr>
+          <tr><td>Self-Determination Theory</td><td>Deci & Ryan</td><td>Autonomy, Competence, Relatedness → well-being</td></tr>
+        </table></div>
+      </div>
+      <div class="theory-box">
+        <h4>Hedonic Adaptation (The Lottery Winner Effect)</h4>
+        <p style="font-size:13.5px;color:var(--text2)">Research shows lottery winners and accident victims (paraplegics) return to similar happiness levels within a year of their life-changing event. We adapt to both good and bad circumstances → This is why circumstances (10%) matter less for long-term happiness!</p>
+        <div class="mnemonic"><strong>🎰 "Lottery winner → 1 year later → same happiness as before"</strong> This is hedonic adaptation / hedonic treadmill!</div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u5-memory">
+      <div class="mnemonic"><strong>😊 Happiness Pie: "GENES-STUFF-ACTIONS"</strong><br>Genes = 50% | Circumstances/Stuff = 10% | Actions = 40%<br>Change your ACTIONS = change 40% of your happiness!</div>
+      <div class="mnemonic"><strong>📊 Measures of Happiness: "PALS"</strong><br>Positive affect · Affect balance · Life satisfaction · Social support</div>
+      <div class="mnemonic"><strong>🎭 Hedonism vs Eudaimonia:</strong><br>Hedonism = FEEL good (pleasure focus) – ancient Greeks<br>Eudaimonia = DO good + BE good (virtue focus) – Aristotle<br>"HEDO = HAPPY in the moment" | "EUDAI = EXCELLENT long-term life"</div>
+    </div>
+
+    <div class="tab-content" id="u5-mcq">
+      <div class="quiz-container" id="u5-quiz"></div>
+    </div>
+
+    <div class="tab-content" id="u5-revision">
+      <div class="revision-sheet">
+        <h3>⚡ Unit V – One-Page Revision Sheet</h3>
+        <div class="rev-grid">
+          <div class="rev-item"><strong>Happiness causes</strong>Social relationships strongest (Q5)</div>
+          <div class="rev-item"><strong>50-10-40 Rule</strong>Genes 50%, Circumstances 10%, Actions 40%</div>
+          <div class="rev-item"><strong>Happiness → Well-being</strong>Positive correlation with mental & physical health (Q8)</div>
+          <div class="rev-item"><strong>Happiness measures</strong>Positive emotions, life satisfaction, social support (Q9)</div>
+          <div class="rev-item"><strong>Measurement limitation</strong>Mood biases in self-report (Q25)</div>
+          <div class="rev-item"><strong>NOT a measure</strong>Income level (Q28) – it's a correlate!</div>
+          <div class="rev-item"><strong>Hedonism</strong>Maximize pleasure – ancient Greeks</div>
+          <div class="rev-item"><strong>Eudaimonia</strong>Aristotle – flourishing through virtue</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ UNIT 6 ═══════════ -->
+  <div class="page" id="page-unit6">
+    <div class="section-title">📓 Unit VI – Application of Positive Psychology</div>
+    <span class="badge badge-yellow">🟡 Moderate Priority – CO6 – Journal Writing is Part B Q3!</span>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('u6','learn',this)">📖 Learn</div>
+      <div class="tab" onclick="switchTab('u6','memory',this)">🧠 Memory</div>
+      <div class="tab" onclick="switchTab('u6','mcq',this)">🎯 MCQs</div>
+      <div class="tab" onclick="switchTab('u6','revision',this)">⚡ Revision</div>
+    </div>
+
+    <div class="tab-content active" id="u6-learn">
+      <div class="subsection">
+        <h3>6.1 Mindfulness Exercises</h3>
+        <p><strong>Mindfulness</strong> = The practice of paying deliberate, non-judgmental attention to the present moment. Developed from Buddhist tradition, popularized by Jon Kabat-Zinn in Western psychology.</p>
+        <div class="highlight"><strong>Q17:</strong> "Benefit of incorporating mindfulness exercises into daily life?" = <strong>(b) To enhance present-moment awareness and reduce reactivity</strong>. NOT to compete, NOT for physical endurance, NOT to create complex goals.</div>
+        <div class="cards-grid">
+          <div class="card card-blue"><h3>🧘 Types of Mindfulness Practice</h3><ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px"><li>Body scan meditation</li><li>Mindful breathing</li><li>Mindful eating</li><li>Walking meditation</li><li>MBSR (Mindfulness-Based Stress Reduction)</li></ul></div>
+          <div class="card card-green"><h3>✅ Benefits</h3><ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px"><li>Reduces stress & anxiety</li><li>Improves emotional regulation</li><li>Enhances focus and attention</li><li>Better sleep quality</li><li>Reduces rumination</li></ul></div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.2 Journal Writing</h3>
+        <p><strong>Journal writing / Expressive writing</strong> = Recording thoughts, feelings, and experiences in written form as a therapeutic and reflective practice.</p>
+        <div class="highlight"><strong>Q15:</strong> "Key difference between journal writing and meditation in processing emotions?" = <strong>(a) Meditation focuses on detachment, while journal writing encourages active self-reflection</strong>. Journal writing ≠ eliminates stress faster than meditation. They are NOT identical. Meditation ≠ only effective with journaling.</div>
+        <div class="highlight"><strong>Q18:</strong> "How can story writing be applied in positive psychology?" = <strong>(c) It enables individuals to reframe and create positive narratives about their lives</strong>. NOT unrelated to well-being. NOT emphasizing negative experiences. NOT promoting isolation.</div>
+        <div class="highlight"><strong>Q3 Part B (Sample Paper):</strong> "Explain role of journal writing in promoting mental health/well-being. Illustrate how individuals utilize journaling for self-reflection, gratitude practice, and personal growth" → This is a FULL 10-mark answer!</div>
+
+        <h4>Types of Journaling in Positive Psychology</h4>
+        <div class="table-wrap"><table>
+          <tr><th>Type</th><th>Method</th><th>Benefit</th></tr>
+          <tr><td>Gratitude Journal</td><td>Write 3 things grateful for daily</td><td>Increases positive affect, reduces depression</td></tr>
+          <tr><td>Expressive Writing</td><td>Write freely about thoughts/emotions (Pennebaker)</td><td>Processes trauma, boosts immune function</td></tr>
+          <tr><td>Reflective Journal</td><td>Analyze experiences and learning</td><td>Self-awareness, personal growth</td></tr>
+          <tr><td>Future Self Journal</td><td>Write about ideal future self</td><td>Goal clarity, motivation, hope</td></tr>
+          <tr><td>Best Possible Selves</td><td>Describe ideal life in all domains</td><td>Optimism, goal-setting</td></tr>
+        </table></div>
+
+        <div class="theory-box">
+          <h4>James Pennebaker's Expressive Writing Research</h4>
+          <div class="theory-meta"><span class="theory-tag">👤 James Pennebaker</span><span class="theory-tag">📅 1986</span></div>
+          <p style="font-size:13.5px;color:var(--text2)">Pennebaker found that writing about traumatic experiences for just 15-20 minutes × 4 days led to improved immune function, fewer doctor visits, better mood, and better academic performance. <strong>Why it works:</strong> Writing converts chaotic emotions into structured narrative → brain processes and integrates the experience → emotional healing.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.3 Story Writing in Positive Psychology</h3>
+        <p>Story writing (narrative therapy) helps people re-author their life stories – moving from problem-saturated narratives to strength-based ones.</p>
+        <div class="highlight"><strong>Narrative Therapy</strong> (White & Epston): "The person is not the problem; the problem is the problem." By externalizing problems and rewriting life stories, people reclaim agency and well-being.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.4 Meditation</h3>
+        <div class="table-wrap"><table class="diff-table">
+          <tr><th>Mindfulness</th><th>Meditation</th></tr>
+          <tr><td>Can be practiced anywhere, anytime</td><td>Formal practice, usually in set time</td></tr>
+          <tr><td>Paying attention to present moment</td><td>Training attention and awareness</td></tr>
+          <tr><td>Active engagement with awareness</td><td>Often involves detachment/observation</td></tr>
+          <tr><td>Example: mindful walking</td><td>Example: sitting meditation, vipassana</td></tr>
+        </table></div>
+        <div class="highlight"><strong>Q15 Key Distinction:</strong> Meditation = DETACHMENT. Journal Writing = ACTIVE SELF-REFLECTION. Remember this difference!</div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.5 Yoga</h3>
+        <p>Yoga integrates physical postures (asanas), breathing techniques (pranayama), and meditation → comprehensive mind-body practice for well-being.</p>
+        <div class="cards-grid">
+          <div class="card card-green"><h3>Psychological Benefits</h3><ul style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:16px"><li>Reduces cortisol (stress hormone)</li><li>Reduces anxiety and depression</li><li>Increases GABA (calming neurotransmitter)</li><li>Improves self-awareness and body image</li></ul></div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.6 Positive Coping Strategies</h3>
+        <p><strong>Coping</strong> = Strategies used to manage stress and adversity. Positive Psychology focuses on <em>adaptive</em> coping strategies.</p>
+        <div class="table-wrap"><table>
+          <tr><th>Type</th><th>Strategy</th><th>Example</th></tr>
+          <tr><td>Problem-Focused</td><td>Address the source of stress directly</td><td>Making a study schedule to reduce exam stress</td></tr>
+          <tr><td>Emotion-Focused</td><td>Regulate emotional response to stress</td><td>Talking to a friend, journaling feelings</td></tr>
+          <tr><td>Meaning-Focused</td><td>Find meaning or growth in adversity</td><td>Post-traumatic growth</td></tr>
+          <tr><td>Social Support</td><td>Seek support from others</td><td>Talking to family, support groups</td></tr>
+          <tr><td>Cognitive Reframing</td><td>Change perspective on stressor</td><td>"This difficulty is making me stronger"</td></tr>
+        </table></div>
+        <div class="highlight"><strong>Q10:</strong> "Positive coping strategies can include?" = <strong>(a) Seeking support from friends and family</strong>. NOT avoiding problems, NOT ignoring emotions, NOT harmful behaviors!</div>
+      </div>
+
+      <div class="subsection">
+        <h3>6.7 Role Play</h3>
+        <p>Role play in positive psychology helps develop empathy, practice social skills, rehearse difficult conversations, and build confidence through experiential learning.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>6.8 Mental Health and Moving Toward Balanced Conceptualization</h3>
+        <p>The "complete mental health" or "dual continuum" model (Keyes, 2005) suggests mental health and mental illness are NOT opposites on a single continuum but TWO separate dimensions. You can have low mental illness but also low well-being (languishing) – and Positive Psychology aims to move people from languishing to flourishing.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" id="u6-memory">
+      <div class="mnemonic"><strong>📝 Applications mnemonic: "MJ SRMY"</strong><br><strong>M</strong>indfulness · <strong>J</strong>ournaling · <strong>S</strong>tory writing · <strong>R</strong>ole play · <strong>M</strong>editation · <strong>Y</strong>oga</div>
+      <div class="mnemonic"><strong>🧘 Meditation vs Journaling:</strong><br>Meditation = ZEN DETACHMENT (observe without reacting)<br>Journaling = ACTIVE REFLECTION (engage with thoughts, write them out)</div>
+      <div class="mnemonic"><strong>🆘 Positive Coping = "SEEK HELP"</strong><br>Social support · Exercise · Emotion regulation · Knowledge/problem-solving · Humor · Empathy · Laughter · Planning</div>
+    </div>
+
+    <div class="tab-content" id="u6-mcq">
+      <div class="quiz-container" id="u6-quiz"></div>
+    </div>
+
+    <div class="tab-content" id="u6-revision">
+      <div class="revision-sheet">
+        <h3>⚡ Unit VI – One-Page Revision Sheet</h3>
+        <div class="rev-grid">
+          <div class="rev-item"><strong>Mindfulness benefit</strong>Present-moment awareness & reduce reactivity (Q17)</div>
+          <div class="rev-item"><strong>Meditation vs Journaling</strong>Meditation=detachment; Journaling=active self-reflection (Q15)</div>
+          <div class="rev-item"><strong>Story writing</strong>Reframe & create positive narratives (Q18)</div>
+          <div class="rev-item"><strong>Positive coping</strong>Seeking support from friends & family (Q10)</div>
+          <div class="rev-item"><strong>Pennebaker</strong>Expressive writing → immune function + healing</div>
+          <div class="rev-item"><strong>Gratitude journal</strong>3 good things/day → increases well-being</div>
+          <div class="rev-item"><strong>Yoga benefits</strong>Reduces cortisol, anxiety, depression</div>
+          <div class="rev-item"><strong>Languishing → Flourishing</strong>Goal of Positive Psychology applications</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ FLASHCARDS ═══════════ -->
+  <div class="page" id="page-flashcards">
+    <div class="section-title">⚡ Flashcard Deck</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13.5px">Click any card to reveal the answer! Master all cards before your exam.</p>
+    <div class="flashcard-deck" id="flashcardDeck"></div>
+  </div>
+
+  <!-- ═══════════ MCQ QUIZ ═══════════ -->
+  <div class="page" id="page-mcq-quiz">
+    <div class="section-title">🎯 Full MCQ Quiz Bank</div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('quiz','all',this)">🎯 All Units (70+)</div>
+      <div class="tab" onclick="switchTab('quiz','sample',this)">📄 Sample Paper Qs</div>
+      <div class="tab" onclick="switchTab('quiz','tricky',this)">🔥 Tricky Qs</div>
+    </div>
+    <div class="tab-content active" id="quiz-all">
+      <div class="quiz-container" id="main-quiz"></div>
+    </div>
+    <div class="tab-content" id="quiz-sample">
+      <div class="exam-card">
+        <h3>📄 Sample Paper Questions – All 30 MCQs with Answers</h3>
+        <div class="quiz-container" id="sample-quiz"></div>
+      </div>
+    </div>
+    <div class="tab-content" id="quiz-tricky">
+      <div class="quiz-container" id="tricky-quiz"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SUBJECTIVE ═══════════ -->
+  <div class="page" id="page-subjective">
+    <div class="section-title">✍️ Top 15 Subjective Questions</div>
+    <div id="subjectiveContainer"></div>
+  </div>
+
+  <!-- ═══════════ MOCK TEST ═══════════ -->
+  <div class="page" id="page-mock-test">
+    <div class="section-title">📝 Full Mock Test</div>
+    <div class="mock-test-header">
+      <div style="font-family:var(--font-head);font-size:20px;font-weight:800;color:var(--purple)">PSY292 – POSITIVE PSYCHOLOGY</div>
+      <div style="color:var(--text2);font-size:13px;margin:6px 0">Time: 3 Hours | Max Marks: 70 | Part A: 30 MCQs | Part B: 4 of 5 questions</div>
+      <div class="timer-display" id="mockTimer">03:00:00</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:16px">
+        <button class="btn btn-primary" onclick="startMockTimer()">▶ Start Timer</button>
+        <button class="btn btn-ghost" onclick="stopMockTimer()">⏸ Pause</button>
+        <button class="btn btn-ghost" onclick="resetMockTimer()">↺ Reset</button>
+      </div>
+    </div>
+    <div class="exam-card">
+      <h3>📋 PART A – Objective (30 × 1 = 30 marks)</h3>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:16px">Negative marking: –0.25 per wrong answer. Attempt ALL 30.</p>
+      <div id="mockPartA"></div>
+    </div>
+    <div class="exam-card" style="margin-top:24px">
+      <h3>✍️ PART B – Subjective (4 × 10 = 40 marks)</h3>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:16px">Attempt ANY 4 out of 5 questions.</p>
+      <div id="mockPartB"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ EXAM STRATEGY ═══════════ -->
+  <div class="page" id="page-exam-strategy">
+    <div class="section-title">⚔️ Exam Strategy</div>
+
+    <div class="cards-grid">
+      <div class="card card-red">
+        <div class="card-icon">🌙</div>
+        <h3>Night Before Exam</h3>
+        <p>Only revision – NO new topics! Read Quick Revision notes. Review flashcards. Sleep 7-8 hrs. Eat light.</p>
+      </div>
+      <div class="card card-yellow">
+        <div class="card-icon">⚡</div>
+        <h3>MCQ Strategy</h3>
+        <p>Eliminate 2 wrong answers first. Use "NOT" questions carefully. If unsure about 2 options, use memory tricks. Skip and return if stuck.</p>
+      </div>
+      <div class="card card-blue">
+        <div class="card-icon">✍️</div>
+        <h3>Subjective Strategy</h3>
+        <p>Read all 5 questions first. Choose 4 easiest. Write intro + 4-5 main points + conclusion. Use headings, diagrams, tables.</p>
+      </div>
+      <div class="card card-green">
+        <div class="card-icon">⏰</div>
+        <h3>Time Management</h3>
+        <p>Part A MCQs: 45-60 min. Part B: 120 min (30 min/question). Leave 15 min for revision. First 90 min: OMR sheet!</p>
+      </div>
+    </div>
+
+    <div class="section-title">🏆 Most Scoring Areas</div>
+    <div class="table-wrap"><table>
+      <tr><th>Rank</th><th>Topic</th><th>Expected Marks</th><th>Difficulty</th></tr>
+      <tr><td>1</td><td>Resilience (Unit IV)</td><td>10 marks (Part B Q2) + 4 MCQs</td><td>Medium</td></tr>
+      <tr><td>2</td><td>Self-Control/Self-Regulation (Unit II)</td><td>5 MCQs + Part B Q5</td><td>Easy-Medium</td></tr>
+      <tr><td>3</td><td>Happiness & Measurement (Unit V)</td><td>5 MCQs + Part B Q4 (10 marks)</td><td>Medium</td></tr>
+      <tr><td>4</td><td>Allport's Trait Theory (Unit III)</td><td>Part B Q6 (10 marks) + 4 MCQs</td><td>Medium</td></tr>
+      <tr><td>5</td><td>Journal Writing (Unit VI)</td><td>Part B Q3 (10 marks) + 3 MCQs</td><td>Easy</td></tr>
+    </table></div>
+
+    <div class="section-title">📋 3-Hour Crash Course Plan</div>
+    <div class="exam-card">
+      <h3>If you have only 3 hours...</h3>
+      <div class="timeline">
+        <div class="timeline-item"><h4>Hour 1 (0-60 min) – High Priority Topics</h4><p>Unit I: Seligman, PERMA, Well-being dimensions, GNHI | Unit II: Self-control definitions (Q7,Q16,Q22,Q29,Q30) | Unit IV: Resilience (Q4,Q14,Q19,Q23) + Sources</p></div>
+        <div class="timeline-item"><h4>Hour 2 (60-120 min) – Theory Heavy</h4><p>Unit III: Big Five (OCEAN), Allport's CCS, Hippocrates 4 temperaments | Unit V: Happiness causes (Q5), measurement (Q25,Q28), effects (Q8,Q9)</p></div>
+        <div class="timeline-item"><h4>Hour 3 (120-180 min) – Applications + Practice</h4><p>Unit VI: Journal writing vs meditation (Q15), mindfulness (Q17), coping (Q10) | Attempt all 30 sample paper MCQs | Write 2 practice answers (Allport + Happiness measurement)</p></div>
+      </div>
+    </div>
+
+    <div class="section-title">⚠️ Common Mistakes to Avoid</div>
+    <div class="cards-grid">
+      <div class="card card-red"><h3>❌ Mistake 1</h3><p>Confusing "father of positive psychology" – It's SELIGMAN, not Maslow/Rogers/Freud!</p></div>
+      <div class="card card-red"><h3>❌ Mistake 2</h3><p>Big Five "EXCEPT" – Honesty-humility is HEXACO. Big Five = OCEAN only!</p></div>
+      <div class="card card-red"><h3>❌ Mistake 3</h3><p>4 Temperaments = HIPPOCRATES (ancient). NOT Eysenck (he had PEN/3 dimensions)!</p></div>
+      <div class="card card-red"><h3>❌ Mistake 4</h3><p>"NOT a dimension of well-being" → Material well-being (trick!). Use PHYSICAL/ECONOMIC correctly.</p></div>
+      <div class="card card-yellow"><h3>⚠️ Mistake 5</h3><p>Self-regulation ≠ innate ability. It CAN be developed! (Q7 trick option a)</p></div>
+      <div class="card card-yellow"><h3>⚠️ Mistake 6</h3><p>Income is NOT a MEASURE of happiness – it's a correlate/predictor. Measure = SWLS, PANAS.</p></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ QUICK REVISION ═══════════ -->
+  <div class="page" id="page-quick-revision">
+    <div class="section-title">⚡ Quick Revision – All Units</div>
+    <div class="subsection">
+      <h3>🔑 Top 50 Keywords</h3>
+      <div class="keywords" id="keywordCloud"></div>
+    </div>
+
+    <div class="section-title">📊 All Unit Revisions</div>
+    <div class="accordion" id="rev1">
+      <div class="accordion-header" onclick="toggleAccordion('rev1')">📗 Unit I – Introduction to Positive Psychology <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <ul style="font-size:14px;color:var(--text2);line-height:2.2;padding-left:20px">
+          <li><strong>Father:</strong> Martin E.P. Seligman (1998)</li>
+          <li><strong>PERMA:</strong> Positive emotions, Engagement, Relationships, Meaning, Accomplishment</li>
+          <li><strong>Well-being dimensions:</strong> Physical, Psychological, Social, Spiritual (NOT "Material")</li>
+          <li><strong>GNHI:</strong> Gross National Happiness Index – Bhutan, 1972, holistic development</li>
+          <li><strong>Strengths-based perspective:</strong> Uses individual strengths for goals</li>
+          <li><strong>Aim of +ve Psych:</strong> Enhance human strengths and virtues (Q26)</li>
+          <li><strong>Holistic approach = Positive Psychology approach (Q6)</strong></li>
+          <li><strong>Broaden-and-Build:</strong> Fredrickson – positive emotions widen awareness</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion" id="rev2">
+      <div class="accordion-header" onclick="toggleAccordion('rev2')">📙 Unit II – Self Control & Regulation <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <ul style="font-size:14px;color:var(--text2);line-height:2.2;padding-left:20px">
+          <li><strong>Self-control:</strong> Regulate thoughts/emotions/behaviors for long-term goals</li>
+          <li><strong>Marshmallow Test:</strong> Walter Mischel, Stanford – delay gratification predicts success</li>
+          <li><strong>Ego Depletion:</strong> Baumeister – willpower is limited resource (depletes with use)</li>
+          <li><strong>Self-regulation strategy:</strong> Visualizing success (Q22)</li>
+          <li><strong>Self-regulation benefit:</strong> Improving decision-making (Q29)</li>
+          <li><strong>Self-regulation ≠ innate:</strong> Can be DEVELOPED (Q7)</li>
+          <li><strong>SMART Goals:</strong> Specific, Measurable, Achievable, Relevant, Time-bound</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion" id="rev3">
+      <div class="accordion-header" onclick="toggleAccordion('rev3')">📕 Unit III – Positive Traits <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <ul style="font-size:14px;color:var(--text2);line-height:2.2;padding-left:20px">
+          <li><strong>Hippocrates (4 temperaments):</strong> Choleric, Melancholic, Sanguine, Phlegmatic (Q3)</li>
+          <li><strong>Allport's levels:</strong> Cardinal (dominant, rare) → Central (core, 5-10) → Secondary (situational)</li>
+          <li><strong>Big Five (OCEAN):</strong> Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism</li>
+          <li><strong>Big Five = Costa & McCrae (Q20)</strong></li>
+          <li><strong>Big Five EXCEPT = Honesty-humility (that's HEXACO) (Q13)</strong></li>
+          <li><strong>Trait differences:</strong> Due to genetic AND environmental factors (Q11)</li>
+          <li><strong>Eysenck:</strong> PEN model (Psychoticism, Extraversion, Neuroticism)</li>
+          <li><strong>Gratitude:</strong> Robert Emmons – 3 good things/day exercise</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion" id="rev4">
+      <div class="accordion-header" onclick="toggleAccordion('rev4')">📘 Unit IV – Positive Cognitive States <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <ul style="font-size:14px;color:var(--text2);line-height:2.2;padding-left:20px">
+          <li><strong>Resilience:</strong> Adapt positively to adversity (Q14, Q19)</li>
+          <li><strong>NOT resilient:</strong> Fixed/unchanging view of self (Q4)</li>
+          <li><strong>Resilient person:</strong> Accepts setbacks as growth (Q23)</li>
+          <li><strong>Resilience sources:</strong> Individual, social, community, cultural, economic</li>
+          <li><strong>Optimism 3Ps:</strong> Good = Permanent, Pervasive, Personal; Bad = Temporary, Specific, External</li>
+          <li><strong>Viktor Frankl – Logotherapy:</strong> Primary drive = search for meaning</li>
+          <li><strong>Meaning in life:</strong> Coherent sense of purpose & direction (Q24)</li>
+          <li><strong>Spirituality for well-being:</strong> Reflect on values + seek purpose (Q27)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion" id="rev5">
+      <div class="accordion-header" onclick="toggleAccordion('rev5')">📒 Unit V – Happiness <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <ul style="font-size:14px;color:var(--text2);line-height:2.2;padding-left:20px">
+          <li><strong>Happiness causes:</strong> Social relationships strongest (Q5)</li>
+          <li><strong>50-10-40 Rule:</strong> Genes 50%, Circumstances 10%, Intentional Actions 40%</li>
+          <li><strong>Happiness → Well-being:</strong> Positive correlation with mental & physical health (Q8)</li>
+          <li><strong>Happiness measures include:</strong> Positive emotions, life satisfaction, social support (Q9)</li>
+          <li><strong>Measurement limitation:</strong> Mood biases in self-report (Q25)</li>
+          <li><strong>NOT a measure:</strong> Income level (Q28) – it's a correlate!</li>
+          <li><strong>Hedonism:</strong> Pleasure maximization | <strong>Eudaimonia:</strong> Virtue/flourishing (Aristotle)</li>
+          <li><strong>Hedonic adaptation:</strong> Happiness returns to baseline after major events</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion" id="rev6">
+      <div class="accordion-header" onclick="toggleAccordion('rev6')">📓 Unit VI – Applications <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <ul style="font-size:14px;color:var(--text2);line-height:2.2;padding-left:20px">
+          <li><strong>Mindfulness benefit:</strong> Present-moment awareness & reduce reactivity (Q17)</li>
+          <li><strong>Meditation = detachment; Journaling = active self-reflection (Q15)</strong></li>
+          <li><strong>Story writing:</strong> Reframe & create positive narratives (Q18)</li>
+          <li><strong>Positive coping:</strong> Seeking support from friends & family (Q10)</li>
+          <li><strong>Pennebaker:</strong> Expressive writing → healing, immune function</li>
+          <li><strong>Gratitude journal:</strong> Write 3 good things daily</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ KEYWORDS PAGE ═══════════ -->
+  <div class="page" id="page-keywords">
+    <div class="section-title">🔑 Top Keywords, Definitions & Theories</div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('kw','defs',this)">📖 Top 25 Definitions</div>
+      <div class="tab" onclick="switchTab('kw','theories',this)">🧪 Top 20 Theories</div>
+      <div class="tab" onclick="switchTab('kw','names',this)">👤 Theorists</div>
+    </div>
+    <div class="tab-content active" id="kw-defs">
+      <div id="defsContainer"></div>
+    </div>
+    <div class="tab-content" id="kw-theories">
+      <div id="theoriesContainer"></div>
+    </div>
+    <div class="tab-content" id="kw-names">
+      <div class="table-wrap"><table>
+        <tr><th>Name</th><th>Key Contribution</th><th>Key Year</th></tr>
+        <tr><td><strong>Martin Seligman</strong></td><td>Father of Positive Psychology; PERMA model; Learned Optimism; Authentic Happiness</td><td>1998</td></tr>
+        <tr><td><strong>Hippocrates</strong></td><td>4 Temperaments (Choleric, Melancholic, Sanguine, Phlegmatic)</td><td>~400 BC</td></tr>
+        <tr><td><strong>Gordon Allport</strong></td><td>Trait Theory – Cardinal, Central, Secondary traits</td><td>1936</td></tr>
+        <tr><td><strong>Costa & McCrae</strong></td><td>Big Five / OCEAN / Five-Factor Model</td><td>1992</td></tr>
+        <tr><td><strong>Hans Eysenck</strong></td><td>PEN Model – Psychoticism, Extraversion, Neuroticism</td><td>1947</td></tr>
+        <tr><td><strong>Roy Baumeister</strong></td><td>Ego Depletion Theory – willpower is a limited resource</td><td>1998</td></tr>
+        <tr><td><strong>Walter Mischel</strong></td><td>Marshmallow Test – delay of gratification research</td><td>1960s</td></tr>
+        <tr><td><strong>Viktor Frankl</strong></td><td>Logotherapy – search for meaning as primary drive; Man's Search for Meaning</td><td>1946</td></tr>
+        <tr><td><strong>Barbara Fredrickson</strong></td><td>Broaden-and-Build Theory of positive emotions</td><td>1998</td></tr>
+        <tr><td><strong>Sonja Lyubomirsky</strong></td><td>Happiness "Pie Chart" – 50-10-40 rule</td><td>2005</td></tr>
+        <tr><td><strong>Mihaly Csikszentmihalyi</strong></td><td>Flow Theory – optimal experience</td><td>1990</td></tr>
+        <tr><td><strong>James Pennebaker</strong></td><td>Expressive Writing Research – writing heals</td><td>1986</td></tr>
+        <tr><td><strong>Jon Kabat-Zinn</strong></td><td>MBSR (Mindfulness-Based Stress Reduction); Western mindfulness</td><td>1979</td></tr>
+        <tr><td><strong>Abraham Maslow</strong></td><td>Hierarchy of Needs; peak experiences; humanistic psychology</td><td>1943</td></tr>
+        <tr><td><strong>Albert Bandura</strong></td><td>Self-efficacy theory – belief in one's ability</td><td>1977</td></tr>
+        <tr><td><strong>Robert Emmons</strong></td><td>Gratitude research; gratitude journals</td><td>2003</td></tr>
+        <tr><td><strong>Peterson & Seligman</strong></td><td>VIA Classification of Character Strengths (24 strengths)</td><td>2004</td></tr>
+        <tr><td><strong>Deci & Ryan</strong></td><td>Self-Determination Theory (SDT) – autonomy, competence, relatedness</td><td>1985</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script>
+// ============ DATA ============
+const allMCQs = [
+  // UNIT 1
+  {q:"Who is considered the father of positive psychology?",opts:["Sigmund Freud","Carl Rogers","Martin Seligman","Abraham Maslow"],ans:2,exp:"Martin Seligman is the father of positive psychology. In 1998, during his APA presidential address, he called for a new science studying human flourishing. Freud studied psychopathology; Rogers was humanistic; Maslow created hierarchy of needs.",unit:"Unit I"},
+  {q:"Which perspective in positive psychology focuses on identifying and utilizing individual strengths to achieve personal and professional goals?",opts:["Cognitive-behavioral perspective","Strengths-based perspective","Positive emotion perspective","Existential perspective"],ans:1,exp:"Strengths-based perspective focuses on identifying and building individual strengths. CBT focuses on thought patterns. Positive emotion perspective focuses on feelings. Existential focuses on meaning/existence.",unit:"Unit I"},
+  {q:"Which of the following is NOT a dimension of well-being?",opts:["Physical well-being","Psychological well-being","Social well-being","Material well-being"],ans:3,exp:"'Material well-being' is the WRONG option. The correct dimensions are Physical, Psychological, Social, Spiritual. 'Material' sounds like money/possessions and is NOT a dimension. The economic dimension exists but 'Material well-being' is not the standard term used.",unit:"Unit I"},
+  {q:"What is the primary aim of Positive Psychology?",opts:["To diagnose and treat mental illness","To enhance human strengths and virtues","To focus exclusively on individual happiness","To study the causes of depression"],ans:1,exp:"Primary aim is to enhance human strengths and virtues. Positive Psychology is NOT about diagnosing illness (that's clinical psychology), NOT exclusively individual happiness, NOT studying depression.",unit:"Unit I"},
+  {q:"Which approach to human development emphasizes a holistic perspective, considering physical, emotional, and social aspects of well-being?",opts:["Reductionist approach","Positive psychology approach","GDP approach","Individualistic approach"],ans:1,exp:"Positive psychology approach is holistic – considers the whole person. Reductionist approach focuses on individual components. GDP approach measures only economic output. Individualistic focuses only on individual.",unit:"Unit I"},
+  {q:"GNHI (Gross National Happiness Index) originated in which country?",opts:["India","China","Bhutan","Nepal"],ans:2,exp:"GNHI originated in Bhutan in 1972 under King Jigme Singye Wangchuck. It measures happiness and well-being as alternative to GDP which only measures economic output.",unit:"Unit I"},
+  {q:"Fredrickson's Broaden-and-Build theory states that positive emotions:",opts:["Narrow our focus and build resources","Broaden our awareness and build psychological resources","Are less important than negative emotions","Only affect physical health"],ans:1,exp:"Broaden-and-Build (Fredrickson, 1998): Positive emotions BROADEN awareness/thinking and BUILD lasting resources (resilience, skills, relationships). Negative emotions NARROW focus (fight/flight).",unit:"Unit I"},
+  {q:"PERMA model was proposed by:",opts:["Barbara Fredrickson","Viktor Frankl","Martin Seligman","Mihaly Csikszentmihalyi"],ans:2,exp:"PERMA (Positive emotions, Engagement, Relationships, Meaning, Accomplishment) was proposed by Martin Seligman in 2011 in his book 'Flourish' as a model of well-being and flourishing.",unit:"Unit I"},
+  // UNIT 2
+  {q:"Among following statements which describes self-regulation?",opts:["It is an innate ability that cannot be developed","It involves managing one's thoughts, feelings, and behaviors to reach goals","It only applies to external circumstances","It is solely dependent on external motivation"],ans:1,exp:"Self-regulation involves managing thoughts, feelings, and behaviors to reach goals. It is NOT innate (can be developed/learned). NOT only external. NOT only about external motivation – internal motivation is key.",unit:"Unit II"},
+  {q:"Which of the following best defines self-control in psychology?",opts:["The ability to suppress emotions completely","The ability to regulate thoughts, emotions, and behaviors in pursuit of long-term goals","The practice of avoiding all pleasurable activities","The process of relying only on external rewards for motivation"],ans:1,exp:"Self-control = regulating thoughts/emotions/behaviors for LONG-TERM goals. NOT suppressing emotions (unhealthy). NOT avoiding pleasure (extreme). NOT relying on external rewards (that's extrinsic motivation).",unit:"Unit II"},
+  {q:"Which strategy is effective in maintaining self-regulation?",opts:["Ignoring distractions","Avoiding all risks","Visualizing success","Relying solely on willpower"],ans:2,exp:"Visualizing success (mental rehearsal) activates motivation circuits and helps maintain self-regulation. Ignoring distractions is passive. Avoiding all risks is too extreme. Willpower alone depletes (ego depletion).",unit:"Unit II"},
+  {q:"How can self-regulation benefit an individual's personal life?",opts:["By disregarding personal goals","By reacting impulsively to situations","By improving decision-making and achieving desired outcomes","By avoiding self-reflection"],ans:2,exp:"Self-regulation improves decision-making by helping people think before acting, align actions with goals, and achieve desired outcomes. Disregarding goals, impulsivity, and avoiding self-reflection are all counterproductive.",unit:"Unit II"},
+  {q:"What is the concept of 'ego depletion' in self-control research?",opts:["The idea that willpower increases with use","The idea that willpower is a limited resource that depletes with use","The belief that self-control is genetically fixed","The notion that external rewards improve self-control"],ans:1,exp:"Ego depletion (Baumeister, 1998) = willpower is like a muscle – it gets tired with use. A limited resource that depletes when repeatedly exercised. NOT increases, NOT genetically fixed, NOT about external rewards.",unit:"Unit II"},
+  {q:"Which psychologist conducted the famous Marshmallow Test on delayed gratification?",opts:["Roy Baumeister","Walter Mischel","Albert Bandura","Martin Seligman"],ans:1,exp:"Walter Mischel at Stanford University in the 1960s-70s conducted the famous Marshmallow Test. Children who delayed gratification (waited for 2 marshmallows instead of eating 1 immediately) showed better life outcomes.",unit:"Unit II"},
+  {q:"Causes of self-control failure include all EXCEPT:",opts:["Ego depletion","Stress and negative emotions","High personal motivation and clear goals","Environmental temptation cues"],ans:2,exp:"High personal motivation and clear goals actually HELP self-control, not cause failure. Ego depletion, stress, and environmental temptation cues are all genuine causes of self-control failure.",unit:"Unit II"},
+  // UNIT 3
+  {q:"Who proposed the theory of basic temperaments – choleric, melancholic, sanguine, and phlegmatic?",opts:["Hans Eysenck","William Sheldon","Hippocrates","B.F. Skinner"],ans:2,exp:"Hippocrates (~400 BC) proposed 4 temperaments based on body humors: Choleric (yellow bile-anger), Melancholic (black bile-sadness), Sanguine (blood-joy), Phlegmatic (phlegm-calm). Eysenck had PEN model. Sheldon had body type theory.",unit:"Unit III"},
+  {q:"The Five-Factor Model (Big Five) includes all EXCEPT:",opts:["Openness to experience","Honesty-humility","Conscientiousness","Agreeableness"],ans:1,exp:"Big Five (OCEAN) = Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism. 'Honesty-humility' is the 6th factor in HEXACO model (6-factor model). It is NOT part of Big Five!",unit:"Unit III"},
+  {q:"Which trait theory emphasizes five core dimensions, commonly known as the Big Five?",opts:["Eysenck's Three Dimensions","Allport's Trait Theory","Cattell's 16 Personality Factors","Costa and McCrae's Five-Factor Model"],ans:3,exp:"Costa and McCrae's Five-Factor Model (1992) = Big Five / OCEAN. Eysenck had 3 dimensions (PEN). Allport had 3 levels (Cardinal/Central/Secondary). Cattell had 16 factors.",unit:"Unit III"},
+  {q:"According to trait theories of personality, individuals differ in their levels of specific traits due to:",opts:["Their current mood","Genetic and environmental factors","Their age and gender","Random chance"],ans:1,exp:"Trait theories (Big Five research, behavioral genetics) show traits are determined by BOTH genetic factors AND environmental influences. Not just mood, not just age, not random.",unit:"Unit III"},
+  {q:"In Allport's Trait Theory, which type of trait is dominant and defines the entire personality?",opts:["Secondary trait","Central trait","Cardinal trait","Peripheral trait"],ans:2,exp:"Cardinal traits are so dominant that they define a person's entire personality (like Mother Teresa = Compassion). They are RARE. Central traits form the core (5-10). Secondary traits are situational.",unit:"Unit III"},
+  {q:"Which of the following best evaluates the impact of personal strengths on success?",opts:["Only intelligence determines success","Personal strengths like resilience and adaptability are key in long-term success","Success depends purely on external opportunities","Strengths do not significantly influence life outcomes"],ans:1,exp:"Research in positive psychology shows personal strengths (resilience, adaptability, optimism) are key factors in long-term success. Intelligence alone is insufficient. External opportunities help but strengths are crucial.",unit:"Unit III"},
+  {q:"Gratitude research by Robert Emmons showed that people who kept gratitude journals experienced:",opts:["Increased negative emotions","Better sleep, more compassion, higher life satisfaction","More anxiety and stress","No significant changes"],ans:1,exp:"Emmons' gratitude research showed gratitude journals → better sleep, more compassion, higher life satisfaction, reduced envy, less depression. It's one of the most well-supported positive psychology interventions.",unit:"Unit III"},
+  // UNIT 4
+  {q:"What is the term for the ability to adapt positively in the face of adversity, trauma, or significant life stressors?",opts:["Resilience","Fragility","Avoidance","Conformity"],ans:0,exp:"Resilience = ability to adapt positively to adversity/trauma. Fragility = breaking under pressure (opposite). Avoidance = running from problems. Conformity = fitting in with others.",unit:"Unit IV"},
+  {q:"What is resilience?",opts:["The ability to ignore problems","The ability to bounce back from adversity","The tendency to dwell on negative events","The inability to cope with stress"],ans:1,exp:"Resilience = bouncing back from adversity. NOT ignoring problems (avoidance). NOT dwelling on negatives (rumination). NOT inability to cope (that's the opposite of resilience).",unit:"Unit IV"},
+  {q:"Which of the following is NOT typically associated with a resilient mindset?",opts:["Flexibility in adapting to change","A fixed and unchanging view of oneself","A positive outlook despite challenges","Effective coping strategies"],ans:1,exp:"A FIXED and unchanging view = FIXED mindset (Carol Dweck). Resilience requires GROWTH mindset – adapting, changing, growing. Flexibility, positive outlook, and coping strategies ARE resilient qualities.",unit:"Unit IV"},
+  {q:"A resilient person is most likely to:",opts:["Avoid challenges","Accept setbacks as part of growth","Blame others for their problems","Remain passive in difficult situations"],ans:1,exp:"Resilient people accept setbacks as growth opportunities. They don't avoid challenges (they face them), don't blame others (they take responsibility), don't remain passive (they take action).",unit:"Unit IV"},
+  {q:"Viktor Frankl developed which therapeutic approach based on finding meaning?",opts:["Psychoanalysis","Logotherapy","Cognitive Therapy","Gestalt Therapy"],ans:1,exp:"Viktor Frankl (Holocaust survivor) developed Logotherapy – 'logos' = meaning. Primary human motivation = search for meaning. He found meaning even in concentration camps and wrote 'Man's Search for Meaning' (1946).",unit:"Unit IV"},
+  {q:"How can spirituality be applied to enhance personal well-being?",opts:["By reflecting on personal values and seeking a deeper sense of purpose","By focusing only on religious practices","By avoiding any challenging life situations","By pursuing material goals as primary focus"],ans:0,exp:"Spirituality in positive psychology = reflecting on personal values and seeking deeper purpose. It does NOT require specific religious practices, does NOT mean avoiding challenges, is NOT about material goals.",unit:"Unit IV"},
+  {q:"Which of the following best describes a person who has found deep meaning in life?",opts:["Easily swayed by external pressures","Focuses solely on short-term pleasures","Has a coherent sense of purpose and direction","Avoids making long-term commitments"],ans:2,exp:"A person with deep meaning has a coherent sense of purpose and direction (Frankl). They are NOT swayed by external pressure (self-directed). They think long-term. They make commitments.",unit:"Unit IV"},
+  // UNIT 5
+  {q:"What factor most strongly influences a person's long-term happiness according to research?",opts:["Regular income increases happiness in the long run","Social relationships are essential for emotional support and well-being","Accumulating material wealth guarantees happiness","Focusing exclusively on academic success"],ans:1,exp:"Research consistently shows social relationships are the strongest predictor of long-term happiness. Income has diminishing returns. Material wealth doesn't guarantee happiness. Academic success is only one factor.",unit:"Unit V"},
+  {q:"How does happiness typically affect an individual's overall well-being?",opts:["It has no impact on well-being","It generally leads to lower life satisfaction","It is positively correlated with better mental and physical health","It causes increased stress and anxiety"],ans:2,exp:"Happiness is POSITIVELY correlated with better mental health (less depression/anxiety), better physical health (stronger immune system, longer lifespan), better relationships, and higher productivity.",unit:"Unit V"},
+  {q:"Measures and correlates of happiness often include:",opts:["Negative emotions and pessimism","Positive emotions, life satisfaction, and social support","Isolation and material possessions","Ignoring personal goals and aspirations"],ans:1,exp:"Happiness measures and correlates include: positive affect/emotions, life satisfaction (SWLS), and social support. Negative emotions and pessimism are associated with UNhappiness.",unit:"Unit V"},
+  {q:"Which of the following is a limitation of measuring happiness through self-report surveys?",opts:["They cannot capture individual differences","They can be influenced by temporary mood states or biases","They are too expensive and complex","They provide no reliable information about happiness"],ans:1,exp:"Key limitation of self-report surveys: mood states at the time of filling affect responses. Someone in a bad mood rates their overall happiness lower. This is a validity concern.",unit:"Unit V"},
+  {q:"Which of the following is NOT a common measure of happiness?",opts:["Life satisfaction","Income level","Positive affect","Social relationships"],ans:1,exp:"Income LEVEL is not a happiness MEASURE (measurement tool). Life satisfaction (SWLS), positive affect (PANAS), and social relationship quality ARE used to measure happiness. Income is a correlate/predictor.",unit:"Unit V"},
+  {q:"According to Sonja Lyubomirsky's happiness pie model, what percentage of happiness is determined by intentional activities?",opts:["50%","10%","40%","80%"],ans:2,exp:"Lyubomirsky's pie chart: Genetic set point = 50%, Life circumstances = 10%, Intentional activities = 40%. The 40% from intentional activities (exercise, gratitude, kindness) is what we can most effectively change!",unit:"Unit V"},
+  // UNIT 6
+  {q:"Positive coping strategies can include:",opts:["Seeking support from friends and family","Avoiding problems altogether","Ignoring emotional responses","Engaging in harmful behaviors"],ans:0,exp:"Positive (adaptive) coping includes seeking social support. Avoiding problems = avoidance coping (maladaptive). Ignoring emotions = suppression (harmful). Harmful behaviors are obviously negative coping.",unit:"Unit VI"},
+  {q:"What is the benefit of incorporating mindfulness exercises into daily life?",opts:["To become more competitive","To enhance present-moment awareness and reduce reactivity","To improve physical endurance","To create more complex goals"],ans:1,exp:"Mindfulness = present-moment awareness + reducing automatic/reactive responses. NOT competitive advantage, NOT physical endurance (that's exercise), NOT making goals more complex.",unit:"Unit VI"},
+  {q:"What is the key difference between journal writing and meditation in processing emotions?",opts:["Meditation focuses on detachment, while journal writing encourages active self-reflection","Journal writing eliminates stress faster than meditation","Both techniques are identical in their approach","Meditation is only effective when done with journal writing"],ans:0,exp:"Key difference: Meditation = observe thoughts/emotions with DETACHMENT (non-reactive awareness). Journal writing = ACTIVELY reflect, process, and explore emotions through writing. They are complementary but different.",unit:"Unit VI"},
+  {q:"How can story writing be applied in positive psychology?",opts:["It is unrelated to well-being","It allows individuals to create narratives emphasizing negative experiences","It enables individuals to reframe and create positive narratives about their lives","It promotes isolation and social withdrawal"],ans:2,exp:"Story writing (narrative therapy) = reframing life stories. Moving from problem-saturated to strength-based narratives. 'The person is not the problem; the problem is the problem' (White & Epston).",unit:"Unit VI"},
+  {q:"James Pennebaker's research on expressive writing showed:",opts:["Writing has no effect on health","Writing about traumatic experiences improves immune function and mood","Only positive writing helps well-being","Writing increases anxiety"],ans:1,exp:"Pennebaker (1986): Writing about traumatic experiences for 15-20 min × 4 days → improved immune function, fewer doctor visits, better mood, reduced distress. Converts chaotic emotions into structured narrative = healing.",unit:"Unit VI"},
+];
+
+const samplePaperMCQs = [
+  {q:"Which perspective in positive psychology focuses on identifying and utilizing individual strengths to achieve personal and professional goals?",opts:["Cognitive-behavioral perspective","Strengths-based perspective","Positive emotion perspective","Existential perspective"],ans:1,exp:"Strengths-based perspective – focuses on using individual strengths. Q1 from sample paper.",unit:"Sample Paper Q1"},
+  {q:"Which of the following is not a dimension of well-being?",opts:["Physical well-being","Psychological well-being","Social well-being","Material well-being"],ans:3,exp:"Material well-being is NOT a dimension. Correct dimensions: Physical, Psychological, Social, Spiritual/Economic. TRICK: Material vs Economic.",unit:"Sample Paper Q2"},
+  {q:"Who proposed the theory of basic temperaments: choleric, melancholic, sanguine, and phlegmatic?",opts:["Hans Eysenck","William Sheldon","Hippocrates","B.F. Skinner"],ans:2,exp:"Hippocrates (~400 BC). NOT Eysenck (PEN model), NOT Sheldon (body types), NOT Skinner (behaviorism).",unit:"Sample Paper Q3"},
+  {q:"Which of the following is NOT typically associated with a resilient mindset?",opts:["Flexibility in adapting to change","A fixed and unchanging view of oneself","A positive outlook despite challenges","Effective coping strategies"],ans:1,exp:"Fixed and unchanging view = fixed mindset. Resilience requires growth mindset and flexibility.",unit:"Sample Paper Q4"},
+  {q:"What factor most strongly influences a person's long-term happiness according to research?",opts:["Regular income increases happiness in the long run","Social relationships are essential for emotional support and well-being","Accumulating material wealth guarantees happiness","Focusing exclusively on academic success"],ans:1,exp:"Social relationships = strongest long-term happiness predictor. Income has diminishing returns.",unit:"Sample Paper Q5"},
+  {q:"Which approach emphasizes holistic perspective considering physical, emotional, and social aspects of well-being?",opts:["Reductionist approach","Positive psychology approach","GDP approach","Individualistic approach"],ans:1,exp:"Positive psychology approach = holistic. Reductionist breaks things into parts.",unit:"Sample Paper Q6"},
+  {q:"Among following statements which describes self-regulation?",opts:["It is an innate ability that cannot be developed","It involves managing one's thoughts, feelings, and behaviors to reach goals","It only applies to external circumstances, not internal processes","It is solely dependent on external motivation"],ans:1,exp:"Self-regulation = managing thoughts/feelings/behaviors to reach goals. It CAN be developed (not innate).",unit:"Sample Paper Q7"},
+  {q:"How does happiness typically affect an individual's overall well-being?",opts:["It has no impact on well-being","It generally leads to lower life satisfaction","It is positively correlated with better mental and physical health","It causes increased stress and anxiety"],ans:2,exp:"Happiness positively correlates with better mental and physical health.",unit:"Sample Paper Q8"},
+  {q:"Measures and correlates of happiness often include:",opts:["Negative emotions and pessimism","Positive emotions, life satisfaction, and social support","Isolation and material possessions","Ignoring personal goals and aspirations"],ans:1,exp:"Happiness correlates: positive emotions, life satisfaction, social support.",unit:"Sample Paper Q9"},
+  {q:"Positive coping strategies can include:",opts:["Seeking support from friends and family","Avoiding problems altogether","Ignoring emotional responses","Engaging in harmful behaviors"],ans:0,exp:"Positive coping = seeking social support. Avoiding, ignoring, and harmful behaviors are maladaptive.",unit:"Sample Paper Q10"},
+  {q:"According to trait theories, individuals differ in their levels of specific traits due to:",opts:["Their current mood","Genetic and environmental factors","Their age and gender","Random chance"],ans:1,exp:"Traits = genetic + environmental factors (both nature and nurture).",unit:"Sample Paper Q11"},
+  {q:"Which best evaluates impact of personal strengths on success?",opts:["Only intelligence determines success","Personal strengths like resilience and adaptability are key factors in long-term success","Success depends purely on external opportunities","Strengths do not significantly influence life outcomes"],ans:1,exp:"Personal strengths (resilience, adaptability) are key for long-term success.",unit:"Sample Paper Q12"},
+  {q:"The Five-Factor Model (Big Five) includes all except:",opts:["Openness to experience","Honesty-humility","Conscientiousness","Agreeableness"],ans:1,exp:"Honesty-humility is HEXACO model (6 factors). Big Five = OCEAN only.",unit:"Sample Paper Q13"},
+  {q:"What is the term for the ability to adapt positively in the face of adversity, trauma, or significant life stressors?",opts:["Resilience","Fragility","Avoidance","Conformity"],ans:0,exp:"Resilience = adapt positively to adversity.",unit:"Sample Paper Q14"},
+  {q:"What is the key difference between journal writing and meditation in processing emotions?",opts:["Meditation focuses on detachment, while journal writing encourages active self-reflection","Journal writing eliminates stress faster than meditation","Both techniques are identical","Meditation is only effective when done with journal writing"],ans:0,exp:"Meditation = detachment. Journal writing = active self-reflection.",unit:"Sample Paper Q15"},
+  {q:"Which best defines self-control?",opts:["The ability to suppress all emotions","The ability to regulate impulses and behaviors in pursuit of long-term goals","The complete elimination of all desires","The reliance on external factors to control behavior"],ans:1,exp:"Self-control = regulate impulses and behaviors for long-term goals. Not suppression, not eliminating desires.",unit:"Sample Paper Q16"},
+  {q:"What is the benefit of incorporating mindfulness exercises into daily life?",opts:["To become more competitive","To enhance present-moment awareness and reduce reactivity","To improve physical endurance","To create more complex goals"],ans:1,exp:"Mindfulness = present-moment awareness + reduce reactivity.",unit:"Sample Paper Q17"},
+  {q:"How can story writing be applied in positive psychology?",opts:["It is unrelated to well-being","It allows individuals to create narratives that emphasize their negative experiences","It enables individuals to reframe and create positive narratives about their lives","It promotes isolation and social withdrawal"],ans:2,exp:"Story writing = reframe and create positive narratives (narrative therapy).",unit:"Sample Paper Q18"},
+  {q:"What is resilience?",opts:["The ability to ignore problems","The ability to bounce back from adversity","The tendency to dwell on negative events","The inability to cope with stress"],ans:1,exp:"Resilience = bounce back from adversity.",unit:"Sample Paper Q19"},
+  {q:"Which trait theory emphasizes five core dimensions, commonly known as the Big Five?",opts:["Eysenck's Three Dimensions","Allport's Trait Theory","Cattell's 16 Personality Factors","Costa and McCrae's Five-Factor Model"],ans:3,exp:"Costa and McCrae's FFM = Big Five. Eysenck = 3 (PEN). Allport = 3 levels. Cattell = 16.",unit:"Sample Paper Q20"},
+  {q:"Who is considered the father of positive psychology?",opts:["Sigmund Freud","Carl Rogers","Martin Seligman","Abraham Maslow"],ans:2,exp:"Martin Seligman = father of positive psychology (1998 APA address).",unit:"Sample Paper Q21"},
+  {q:"Which strategy is effective in maintaining self-regulation?",opts:["Ignoring distractions","Avoiding all risks","Visualizing success","Relying solely on willpower"],ans:2,exp:"Visualizing success is an effective self-regulation strategy.",unit:"Sample Paper Q22"},
+  {q:"A resilient person is most likely to:",opts:["Avoid challenges","Accept setbacks as part of growth","Blame others for their problems","Remain passive in difficult situations"],ans:1,exp:"Resilient person accepts setbacks as growth opportunities.",unit:"Sample Paper Q23"},
+  {q:"Which best describes a person who has found deep sense of meaning in life?",opts:["Easily swayed by external pressures","Focuses solely on short-term pleasures","Has a coherent sense of purpose and direction","Avoids making long-term commitments"],ans:2,exp:"Deep meaning = coherent sense of purpose and direction (Viktor Frankl).",unit:"Sample Paper Q24"},
+  {q:"Which is a limitation of measuring happiness through self-report surveys?",opts:["They are not able to capture individual differences","They can be influenced by temporary mood states or biases","They are too expensive and complex","They provide no reliable information about happiness"],ans:1,exp:"Self-report surveys are biased by current mood states.",unit:"Sample Paper Q25"},
+  {q:"What is the primary aim of Positive Psychology?",opts:["To diagnose and treat mental illness","To enhance human strengths and virtues","To focus exclusively on individual happiness","To study the causes of depression"],ans:1,exp:"Primary aim = enhance human strengths and virtues (NOT diagnosing illness).",unit:"Sample Paper Q26"},
+  {q:"How can spirituality be applied to enhance personal well-being?",opts:["By reflecting on personal values and seeking a deeper sense of purpose","By focusing only on religious practices","By avoiding any challenging life situations","By pursuing material goals as a primary focus"],ans:0,exp:"Spirituality for well-being = reflecting on values + seeking deeper purpose.",unit:"Sample Paper Q27"},
+  {q:"Which is NOT a common measure of happiness?",opts:["Life satisfaction","Income level","Positive affect","Social relationships"],ans:1,exp:"Income level is NOT a measure of happiness. It's a correlate/predictor. Measures = SWLS, PANAS, social relationship quality.",unit:"Sample Paper Q28"},
+  {q:"How can self-regulation benefit an individual's personal life?",opts:["By disregarding personal goals","By reacting impulsively to situations","By improving decision-making and achieving desired outcomes","By avoiding self-reflection"],ans:2,exp:"Self-regulation → better decision-making → achieving desired outcomes.",unit:"Sample Paper Q29"},
+  {q:"Which best defines self-control in psychology?",opts:["The ability to suppress emotions completely","The ability to regulate thoughts, emotions, and behaviors in pursuit of long-term goals","The practice of avoiding all pleasurable activities","The process of relying only on external rewards for motivation"],ans:1,exp:"Self-control = regulate thoughts/emotions/behaviors for long-term goals.",unit:"Sample Paper Q30"},
+];
+
+const trickyMCQs = [
+  {q:"TRICK: Self-regulation is an innate ability that cannot be developed. True or False?",opts:["True – it is genetic","False – it can be developed through practice","True – only some people can self-regulate","False – but only in children"],ans:1,exp:"Self-regulation is NOT innate. Research shows it can be developed through practice, training, mindfulness, and goal-setting strategies. This is a key exam trap!",unit:"Tricky"},
+  {q:"TRICK: Income is a direct measure of happiness. True or False?",opts:["True – more money = more happiness","False – income is a correlate/predictor, not a measure","True – SWLS includes income","False – money has no relationship to happiness"],ans:1,exp:"Income is a CORRELATE/PREDICTOR of happiness, not a direct MEASURE. Measures include SWLS, PANAS. Income does affect happiness (up to a point) but isn't the tool used to measure it.",unit:"Tricky"},
+  {q:"TRICK: The Big Five personality model was proposed by Eysenck. True or False?",opts:["True – Eysenck created the Big Five","False – Big Five was Costa & McCrae","True – Eysenck's PEN model is the Big Five","False – Big Five was proposed by Hippocrates"],ans:1,exp:"Big Five = Costa & McCrae (1992). Eysenck proposed the PEN model with only 3 dimensions. This is a very common exam trap!",unit:"Tricky"},
+  {q:"TRICK: 'Honesty-Humility' is a trait in the Big Five model.",opts:["True – it's one of OCEAN","False – it's in the HEXACO (6-factor) model","True – it replaces Neuroticism","False – Big Five has no such trait at all"],ans:1,exp:"Honesty-Humility is the H in HEXACO (6-factor model by Ashton & Lee). The Big Five = OCEAN (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism). Exam trap from Q13!",unit:"Tricky"},
+  {q:"TRICK: Meditation and journal writing use the same approach to process emotions.",opts:["True – both focus on detachment","False – meditation = detachment; journaling = active self-reflection","True – both require writing","False – meditation is more effective than journaling"],ans:1,exp:"KEY DIFFERENCE: Meditation = detachment/observation without engagement. Journal writing = active self-reflection, processing, and engaging with thoughts. Not identical!",unit:"Tricky"},
+  {q:"ASSERTION: (A) Positive psychology aims to diagnose mental illness. REASON: (R) Seligman focused on studying human weaknesses.",opts:["Both A and R are true and R explains A","A is false but R is true","Both A and R are false","A is true but R is false"],ans:2,exp:"BOTH are FALSE. Positive psychology does NOT diagnose illness (clinical psychology does that). Seligman focused on STRENGTHS and FLOURISHING, not weaknesses. Positive psychology = studying what's RIGHT with people.",unit:"Tricky"},
+  {q:"Which psychologist is associated with BOTH Learned Helplessness AND Learned Optimism AND PERMA?",opts:["Viktor Frankl","Barbara Fredrickson","Martin Seligman","Roy Baumeister"],ans:2,exp:"Martin Seligman! He discovered Learned Helplessness (1967 dog experiments), then developed Learned Optimism (1990 book), and later PERMA well-being model (2011). He evolved from studying helplessness to flourishing!",unit:"Tricky"},
+  {q:"MATCH: 50% of happiness comes from ___; 10% from ___; 40% from ___.",opts:["Circumstances, Actions, Genes","Actions, Genes, Circumstances","Genes, Circumstances, Intentional Activities","Social support, Income, Exercise"],ans:2,exp:"Lyubomirsky's happiness pie: Genes/Set point (50%) + Life circumstances (10%) + Intentional activities (40%). The 40% from intentional activities is the key intervention point!",unit:"Tricky"},
+];
+
+const flashcards = [
+  {front:"What is the PERMA model?", back:"P=Positive emotions, E=Engagement, R=Relationships, M=Meaning, A=Accomplishment. Proposed by Seligman (2011) in 'Flourish'. A model of well-being and flourishing.", tag:"Unit I"},
+  {front:"Who is the father of Positive Psychology?", back:"Martin E.P. Seligman. In 1998, during his APA Presidential address, he called for a new science studying human flourishing.", tag:"Unit I"},
+  {front:"What are Hippocrates' 4 temperaments?", back:"Choleric (yellow bile-anger), Melancholic (black bile-sadness), Sanguine (blood-joy), Phlegmatic (phlegm-calm). Mnemonic: Can My Sweater Please!", tag:"Unit III"},
+  {front:"What is OCEAN in personality psychology?", back:"Big Five personality traits: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism. Proposed by Costa & McCrae (1992).", tag:"Unit III"},
+  {front:"What is Allport's Cardinal Trait?", back:"The most dominant trait that defines a person's entire personality. RARE – few people have one. Example: Mother Teresa = Compassion, Mahatma Gandhi = Non-violence.", tag:"Unit III"},
+  {front:"What is resilience?", back:"The ability to adapt positively in the face of adversity, trauma, or significant life stressors. 'Bouncing back' from hardship. Key cognitive state in positive psychology.", tag:"Unit IV"},
+  {front:"What is Viktor Frankl's Logotherapy?", back:"Therapy based on the idea that the primary human motivation is the search for MEANING. Developed after surviving Holocaust. Book: 'Man's Search for Meaning' (1946).", tag:"Unit IV"},
+  {front:"What is ego depletion?", back:"Roy Baumeister's theory (1998) that self-control/willpower is a limited resource that gets depleted with use. Like a muscle that gets tired.", tag:"Unit II"},
+  {front:"What did the Marshmallow Test find?", back:"Walter Mischel (Stanford, 1960s): Children who delayed gratification (waited for 2 marshmallows) showed better academic performance, relationships, health, and lower substance abuse later in life.", tag:"Unit II"},
+  {front:"Broaden-and-Build Theory", back:"Barbara Fredrickson (1998): Positive emotions BROADEN awareness/thinking (widen cognitive scope) and BUILD lasting resources (resilience, social bonds, knowledge).", tag:"Unit I"},
+  {front:"What is the 50-10-40 rule of happiness?", back:"Sonja Lyubomirsky (2005): 50% of happiness determined by genetic set point, 10% by life circumstances, 40% by intentional activities. We can influence the 40%!", tag:"Unit V"},
+  {front:"What is hedonic adaptation?", back:"The tendency to return to a stable happiness baseline after both positive and negative life events. Explains why lottery winners and accident victims return to similar happiness levels within ~1 year.", tag:"Unit V"},
+  {front:"Meditation vs Journal Writing (key difference)", back:"Meditation = DETACHMENT (observe emotions without engaging). Journal Writing = ACTIVE SELF-REFLECTION (actively process, explore, and engage with thoughts/emotions).", tag:"Unit VI"},
+  {front:"What is mindfulness?", back:"Paying deliberate, non-judgmental attention to the present moment. Developed by Jon Kabat-Zinn (MBSR). Benefits: reduces stress, improves emotional regulation, enhances focus.", tag:"Unit VI"},
+  {front:"What is the GDP vs GNHI difference?", back:"GDP = measures economic output only. GNHI = Gross National Happiness Index, measures well-being holistically (9 domains including mental health, ecology, culture). Origin: Bhutan, 1972.", tag:"Unit I"},
+  {front:"What is self-regulation?", back:"The broader ongoing process of monitoring and managing one's behavior, emotions, and thoughts to achieve desired goals. Involves planning, monitoring, adjusting. NOT innate – can be developed!", tag:"Unit II"},
+  {front:"What is positive coping?", back:"Adaptive coping strategies: seeking social support, cognitive reframing, problem-focused coping, emotion regulation, meaning-making. Vs. negative coping: avoidance, substance use, denial.", tag:"Unit VI"},
+  {front:"Optimism – the 3Ps rule?", back:"Seligman's explanatory style: Optimists explain GOOD events as Permanent, Pervasive, Personal. BAD events as Temporary, Specific, External. Pessimists do the opposite.", tag:"Unit IV"},
+  {front:"What is the Strengths-Based Perspective?", back:"A positive psychology approach that focuses on identifying and utilizing individual strengths to achieve personal and professional goals, rather than fixing weaknesses.", tag:"Unit I"},
+  {front:"James Pennebaker's Expressive Writing", back:"Writing about traumatic experiences for 15-20 minutes × 4 days → improved immune function, fewer doctor visits, better mood, better academic performance. Converts chaos into narrative = healing.", tag:"Unit VI"},
+];
+
+const subjectiveQuestions = [
+  {
+    q:"Q1. Create a theoretical framework that explains the sources of resilience in individuals across different cultural and socioeconomic backgrounds. How might these sources differ, and what implications do they have for interventions? [10 marks]",
+    intro:"Resilience is a dynamic, multifaceted construct that cannot be reduced to individual characteristics alone. It is embedded in ecological and cultural contexts.",
+    points:[
+      "Definition: Resilience = ability to adapt positively to adversity, trauma, or significant stressors (American Psychological Association)",
+      "Source 1 – Individual: Positive self-concept, emotional regulation, optimism, problem-solving skills, sense of humor",
+      "Source 2 – Relational/Social: Strong attachment bonds, mentors, peer support, family cohesion",
+      "Source 3 – Community: Access to education, healthcare, safe neighborhoods, community organizations",
+      "Source 4 – Cultural: Cultural identity, spiritual practices, storytelling traditions, collective efficacy",
+      "Source 5 – Socioeconomic: Financial stability, employment, housing security, absence of poverty-related stress",
+      "Cultural Differences: Collectivist cultures (India, China) emphasize community/family resilience vs individualist cultures (USA) emphasizing personal resilience",
+      "SES Differences: Lower SES may have fewer material resources but stronger community bonds; interventions must be culturally sensitive",
+      "Intervention Implications: Community-based programs, culturally adapted CBT, social support networks, economic empowerment"
+    ],
+    conclusion:"Effective resilience-building interventions must be ecological, culturally sensitive, and address multiple levels (individual, family, community) simultaneously.",
+    keywords:["resilience","adversity","cultural context","socioeconomic","intervention","ecological model","community","protective factors"]
+  },
+  {
+    q:"Q2. Explain the role of journal writing in promoting mental health and well-being according to positive psychology principles. Illustrate how individuals can utilize journaling as a tool for self-reflection, gratitude practice, and personal growth. [10 marks]",
+    intro:"Journal writing is one of the most evidence-based positive psychology interventions, bridging cognitive processing and emotional healing.",
+    points:[
+      "Definition: Journal writing = structured or free-form written expression of thoughts, emotions, and experiences for therapeutic and reflective purposes",
+      "Theoretical Basis: Pennebaker (1986) – expressive writing → improved immune function, mood, and fewer medical visits",
+      "Mechanism: Writing converts chaotic emotions into coherent narrative → brain processes and integrates experience → emotional healing",
+      "Type 1 – Gratitude Journal: Write 3 good things daily → Emmons' research shows higher positive affect, better sleep, reduced depression",
+      "Type 2 – Expressive/Trauma Writing: Pennebaker's protocol – 15-20 min × 4 days about difficult experiences",
+      "Type 3 – Reflective Journal: Analyze experiences and learning → self-awareness, personal growth",
+      "Type 4 – Best Possible Selves: Describe ideal future in all life domains → increases optimism and goal clarity",
+      "Journal Writing vs Meditation: Journal = ACTIVE self-reflection. Meditation = DETACHMENT/observation",
+      "Benefits: Stress reduction, emotional regulation, increased self-awareness, processing trauma, goal clarification, gratitude cultivation",
+      "Positive Psychology Connection: Supports PERMA (positive emotions, meaning, engagement)"
+    ],
+    conclusion:"Journal writing is a versatile, low-cost, high-impact positive psychology tool that promotes self-reflection, emotional processing, gratitude, and personal growth.",
+    keywords:["journal writing","Pennebaker","expressive writing","gratitude journal","self-reflection","mental health","well-being","narrative","healing","positive psychology"]
+  },
+  {
+    q:"Q3. Explain how the measurement of happiness has evolved over time and discuss the challenges associated with quantifying such a subjective concept. [10 marks]",
+    intro:"Happiness, once considered a philosophical concept, has become a rigorous scientific field of measurement, though its subjective nature poses persistent methodological challenges.",
+    points:[
+      "Historical Evolution: From philosophy (Aristotle's eudaimonia, hedonism) to empirical science (20th century)",
+      "Early Approaches: Self-report surveys, life satisfaction scales (1970s-80s)",
+      "Key Instruments: SWLS (Satisfaction with Life Scale – Diener, 1985), PANAS (Positive and Negative Affect Schedule), Oxford Happiness Questionnaire",
+      "Modern Approaches: Experience Sampling Method (ESM), Day Reconstruction Method (DRM), biological measures (cortisol, neuroimaging)",
+      "National Level: World Happiness Report (UN, since 2012), Gallup World Poll, GNHI (Bhutan)",
+      "Challenge 1 – Subjectivity: Happiness is inherently personal; what makes one person happy may not apply to another",
+      "Challenge 2 – Cultural Validity: Happiness concepts differ across cultures (collectivist vs individualist)",
+      "Challenge 3 – Mood Effects: Self-reports influenced by current mood state (Q25 sample paper)",
+      "Challenge 4 – Easterlin Paradox: Economic growth doesn't necessarily increase national happiness",
+      "Challenge 5 – Hedonic Adaptation: People adapt to circumstances, making long-term measurement complex",
+      "Challenge 6 – Multiple Dimensions: Hedonism (pleasure) vs Eudaimonia (meaning) – which to measure?"
+    ],
+    conclusion:"Despite methodological challenges, the scientific measurement of happiness has matured significantly, offering valuable insights for personal interventions and public policy.",
+    keywords:["happiness measurement","SWLS","PANAS","subjective well-being","eudaimonia","hedonism","experience sampling","World Happiness Report","hedonic adaptation","Easterlin paradox"]
+  },
+  {
+    q:"Q4. Explain critically Allport's Trait Theory of Personality. [10 marks]",
+    intro:"Gordon Allport (1936) was a pioneer in the scientific study of personality, proposing one of the first systematic approaches to understanding individual differences through traits.",
+    points:[
+      "Definition of Trait: A trait is a stable, consistent tendency to think, feel, and behave in particular ways across different situations",
+      "Allport's Starting Point: Identified ~18,000 personality-describing words in English dictionary, reduced to ~4,500",
+      "Cardinal Traits: Dominant, pervasive trait that defines entire personality. RARE. Examples: Mother Teresa = Compassion; Hitler = Cruelty",
+      "Central Traits: Core characteristics that form the fundamental personality; 5-10 per person; these are what people describe when asked about someone",
+      "Secondary Traits: Specific, situational preferences; less consistent; revealed only in particular circumstances",
+      "Personal Dispositions: Allport emphasized nomothetic (universal) vs idiographic (individual) approaches to personality",
+      "Criticism 1 – Too Descriptive: Tells WHAT but not WHY or HOW traits develop",
+      "Criticism 2 – Lexical Fallacy: Using dictionary words creates cultural and linguistic bias",
+      "Criticism 3 – Ignores Situation: Same person behaves differently in different situations (Mischel's situationist critique)",
+      "Criticism 4 – Cardinal Traits Too Vague: Hard to operationalize and measure scientifically",
+      "Criticism 5 – Ignores Development: Doesn't explain how traits emerge from childhood experiences",
+      "Legacy: Inspired Cattell (16 PF), Eysenck (PEN), and eventually the Big Five (Costa & McCrae)"
+    ],
+    conclusion:"Despite its limitations, Allport's trait theory was groundbreaking in establishing personality psychology as a scientific discipline and laid the foundation for all subsequent trait research.",
+    keywords:["Allport","trait theory","cardinal trait","central trait","secondary trait","nomothetic","idiographic","personality","Big Five","criticism","16 PF"]
+  },
+  {
+    q:"Q5. How do you think repeatedly exerting self-control in daily life affects your ability to maintain self-control over time? Discuss with reference to psychological theory. [10 marks]",
+    intro:"The relationship between self-control use and its depletion is one of the most debated topics in modern positive psychology and behavior regulation research.",
+    points:[
+      "Central Theory: Ego Depletion (Roy Baumeister, 1998) – self-control as a LIMITED cognitive resource",
+      "The 'Muscle' Analogy: Like a muscle, self-control can get tired after repeated use but can be strengthened with regular practice",
+      "Supporting Evidence: Baumeister's radish/cookies experiment – participants who resisted cookies (used self-control) gave up faster on puzzles",
+      "Short-term Effect: Repeated self-control → depletes executive resources → poorer decisions later in day (decision fatigue)",
+      "Long-term Effect: Regular self-control practice → actually STRENGTHENS the capacity over time (like muscle training)",
+      "Mediating Factors: Sleep restores self-control capacity; glucose/blood sugar affects willpower; positive emotions buffer depletion",
+      "Implications: Important decisions should be made when fresh (morning). Schedule willpower-intensive tasks early. Rest between demanding tasks.",
+      "Alternative Theory: Motivational perspective (Inzlicht & Schmeichel) – depletion may be about motivation shift, not actual resource depletion",
+      "Personal Application: Creating habits reduces self-control burden. When actions become automatic, they don't deplete willpower.",
+      "Positive Psychology Perspective: Building intrinsic motivation reduces reliance on pure willpower"
+    ],
+    conclusion:"Repeatedly exerting self-control has a complex dual effect: short-term depletion but long-term strengthening. Understanding this helps us strategically manage our self-control resources.",
+    keywords:["ego depletion","self-control","Baumeister","willpower","cognitive resource","decision fatigue","muscle analogy","habit formation","motivation","executive function"]
+  },
+];
+
+const definitions = [
+  {term:"Positive Psychology", def:"Branch of psychology that scientifically studies what makes life worth living – focusing on strengths, virtues, and flourishing rather than pathology."},
+  {term:"Resilience", def:"The capacity to adapt positively in the face of adversity, trauma, tragedy, threats, or significant sources of stress."},
+  {term:"Self-Regulation", def:"The process of monitoring and managing one's own behavior, emotions, and thoughts to achieve desired goals over time."},
+  {term:"Self-Control", def:"The ability to regulate impulses, thoughts, and behaviors in pursuit of long-term goals, overriding short-term temptations."},
+  {term:"Well-Being", def:"A multi-dimensional state of comfort, health, and happiness encompassing physical, psychological, social, and spiritual dimensions."},
+  {term:"PERMA", def:"Seligman's model of flourishing: Positive emotions, Engagement, Relationships, Meaning, Accomplishment."},
+  {term:"Ego Depletion", def:"Baumeister's theory that self-control is a limited, depletable cognitive resource that gets exhausted with repeated use."},
+  {term:"Trait", def:"A relatively stable and enduring characteristic of an individual that influences behavior consistently across diverse situations."},
+  {term:"Big Five (OCEAN)", def:"Five-factor model of personality (Costa & McCrae): Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism."},
+  {term:"Resilience Sources", def:"Factors that build resilience: individual (optimism, regulation), social (support networks), community (resources), cultural (identity), economic (stability)."},
+  {term:"Mindfulness", def:"The practice of paying deliberate, non-judgmental attention to the present moment, enhancing awareness and reducing automatic reactivity."},
+  {term:"Gratitude", def:"Recognition and appreciation of positive aspects of life; a character strength and positive psychology intervention linked to improved well-being."},
+  {term:"Logotherapy", def:"Viktor Frankl's therapeutic approach based on the idea that the primary human motivational drive is the search for meaning in life."},
+  {term:"Flow", def:"Csikszentmihalyi's concept of complete absorption and optimal experience in a challenging activity; associated with happiness and intrinsic motivation."},
+  {term:"Optimism", def:"A positive explanatory style explaining good events as permanent, pervasive, personal and bad events as temporary, specific, external."},
+  {term:"GNHI", def:"Gross National Happiness Index – holistic measure of national well-being across 9 domains; originated in Bhutan (1972)."},
+  {term:"Hedonic Adaptation", def:"The tendency to return to a relatively stable level of happiness following major positive or negative life events (the 'hedonic treadmill')."},
+  {term:"Eudaimonia", def:"Aristotle's concept of happiness as living a virtuous, meaningful life and fulfilling one's potential (as opposed to mere pleasure/hedonism)."},
+  {term:"Positive Coping", def:"Adaptive strategies for managing stress: seeking support, cognitive reframing, problem-solving, meaning-making, and mindfulness."},
+  {term:"Expressive Writing", def:"Pennebaker's therapeutic writing technique: writing about difficult experiences for 15-20 min × 4 days improves mental and physical health."},
+  {term:"Broaden-and-Build Theory", def:"Fredrickson's theory that positive emotions broaden cognitive awareness and build lasting psychological, social, and physical resources."},
+  {term:"Self-Efficacy", def:"Bandura's concept: belief in one's capacity to execute behaviors needed to produce specific outcomes; key predictor of motivation and performance."},
+  {term:"Learned Helplessness", def:"Seligman's concept: repeated exposure to uncontrollable events leads to belief that one's actions don't matter → passivity even when action is possible."},
+  {term:"Cardinal Trait (Allport)", def:"A single, dominant personality trait so pervasive that it defines a person's entire personality. RARE. Example: compassion defining Mother Teresa."},
+  {term:"Forgiveness", def:"Voluntary replacement of negative feelings (resentment, anger) toward an offender with positive or neutral feelings; for one's own well-being, not condoning harm."},
+];
+
+const theoriesList = [
+  {name:"PERMA Model", author:"Seligman (2011)", desc:"Positive emotions + Engagement + Relationships + Meaning + Accomplishment = Flourishing"},
+  {name:"Broaden-and-Build Theory", author:"Fredrickson (1998)", desc:"Positive emotions broaden awareness → build lasting resources"},
+  {name:"Ego Depletion Theory", author:"Baumeister (1998)", desc:"Willpower is a limited resource that depletes with use"},
+  {name:"Learned Optimism", author:"Seligman (1990)", desc:"Optimists explain good=permanent/pervasive/personal; bad=temporary/specific/external"},
+  {name:"Big Five (FFM)", author:"Costa & McCrae (1992)", desc:"OCEAN: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism"},
+  {name:"Allport's Trait Theory", author:"Gordon Allport (1936)", desc:"Cardinal (dominant) → Central (core) → Secondary (situational) traits"},
+  {name:"Hippocrates' Temperaments", author:"Hippocrates (~400 BC)", desc:"4 types: Choleric, Melancholic, Sanguine, Phlegmatic based on body humors"},
+  {name:"Logotherapy", author:"Viktor Frankl (1946)", desc:"Primary human motivation = search for meaning; suffering can be meaningful"},
+  {name:"Lyubomirsky's Happiness Pie", author:"Sonja Lyubomirsky (2005)", desc:"Happiness = 50% genes + 10% circumstances + 40% intentional activities"},
+  {name:"Set Point Theory", author:"Brickman & Campbell (1971)", desc:"Happiness returns to genetic baseline after major positive/negative events"},
+  {name:"Flow Theory", author:"Csikszentmihalyi (1990)", desc:"Happiness = complete absorption in challenging activities (skill = challenge)"},
+  {name:"Self-Determination Theory", author:"Deci & Ryan (1985)", desc:"Well-being needs: Autonomy + Competence + Relatedness"},
+  {name:"Authentic Happiness Theory", author:"Seligman (2002)", desc:"3 paths: Pleasant life + Good life + Meaningful life"},
+  {name:"Marshmallow/Delay of Gratification", author:"Walter Mischel (1960s)", desc:"Delaying gratification in childhood predicts long-term success"},
+  {name:"Learned Helplessness", author:"Seligman (1967)", desc:"Uncontrollable events → belief that actions don't matter → passivity"},
+  {name:"Trait Theory (Eysenck PEN)", author:"Hans Eysenck (1947)", desc:"3 dimensions: Psychoticism, Extraversion, Neuroticism"},
+  {name:"Expressive Writing Research", author:"Pennebaker (1986)", desc:"Writing about trauma for 15-20 min × 4 days → healing, immune function"},
+  {name:"VIA Character Strengths", author:"Peterson & Seligman (2004)", desc:"24 strengths under 6 virtues: Wisdom, Courage, Humanity, Justice, Temperance, Transcendence"},
+  {name:"Narrative Therapy", author:"White & Epston (1990)", desc:"The person is not the problem; problem is the problem; rewrite your life story"},
+  {name:"GNHI Framework", author:"King Jigme, Bhutan (1972)", desc:"9 domains of well-being beyond GDP: health, education, ecology, culture, governance, time use, community, psychological well-being, living standards"},
+];
+
+const keywords50 = ["Positive Psychology","Well-being","PERMA","Martin Seligman","Resilience","Self-control","Self-regulation","Ego Depletion","Marshmallow Test","Big Five OCEAN","Allport","Cardinal Trait","Central Trait","Secondary Trait","Hippocrates","Temperaments","Costa McCrae","Flow","Eudaimonia","Hedonism","Gratitude","Forgiveness","Mindfulness","Journal Writing","Expressive Writing","Meditation","Logotherapy","Viktor Frankl","Meaning","Optimism","3Ps","Hedonic Adaptation","Set Point","GNHI","Holistic Approach","Broaden-and-Build","Self-efficacy","Narrative Therapy","Positive Coping","SWLS","PANAS","VIA Strengths","Flourishing","Languishing","50-10-40","Learned Helplessness","Learned Optimism","Spirituality","Value Crisis","Pennebaker"];
+
+// ============ QUIZ RENDERING ============
+function renderQuiz(mcqData, containerId) {
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  container.innerHTML = '';
+  mcqData.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-question';
+    div.innerHTML = `
+      <div class="q-number">Q${i+1} · ${q.unit}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt, j) => `<div class="quiz-option" onclick="checkAns(this,${j},${q.ans},'exp-${containerId}-${i}')" data-idx="${j}">(${String.fromCharCode(65+j)}) ${opt}</div>`).join('')}
+      </div>
+      <div class="quiz-controls">
+        <button class="btn btn-ghost" onclick="showExplanation('exp-${containerId}-${i}')">💡 Explain</button>
+      </div>
+      <div class="quiz-explanation" id="exp-${containerId}-${i}">
+        <strong>✅ Correct: (${String.fromCharCode(65+q.ans)}) ${q.opts[q.ans]}</strong><br><br>${q.exp}
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+function checkAns(el, chosen, correct, expId) {
+  const parent = el.parentElement;
+  const opts = parent.querySelectorAll('.quiz-option');
+  opts.forEach((o,i) => {
+    o.style.pointerEvents = 'none';
+    if(i === correct) o.classList.add('correct');
+    else if(i === chosen && chosen !== correct) o.classList.add('wrong');
+    else if(i === correct) o.classList.add('reveal');
+  });
+  document.getElementById(expId).classList.add('show');
+}
+
+function showExplanation(id) { document.getElementById(id).classList.add('show'); }
+
+// Unit-specific quiz data
+const unitQuizzes = {
+  'u1-quiz': allMCQs.filter(q=>q.unit==="Unit I"),
+  'u2-quiz': allMCQs.filter(q=>q.unit==="Unit II"),
+  'u3-quiz': allMCQs.filter(q=>q.unit==="Unit III"),
+  'u4-quiz': allMCQs.filter(q=>q.unit==="Unit IV"),
+  'u5-quiz': allMCQs.filter(q=>q.unit==="Unit V"),
+  'u6-quiz': allMCQs.filter(q=>q.unit==="Unit VI"),
+  'main-quiz': allMCQs,
+  'sample-quiz': samplePaperMCQs,
+  'tricky-quiz': trickyMCQs,
+};
+
+// ============ FLASHCARDS ============
+function renderFlashcards() {
+  const deck = document.getElementById('flashcardDeck');
+  if(!deck) return;
+  deck.innerHTML = flashcards.map((fc, i) => `
+    <div class="flashcard" id="fc-${i}" onclick="flipCard(${i})">
+      <div class="card-front">
+        <div class="fc-tag">${fc.tag}</div>
+        <h4>${fc.front}</h4>
+        <p style="margin-top:8px;font-size:11px;color:var(--text2)">👆 Click to reveal answer</p>
+      </div>
+      <div class="card-back">
+        <div class="fc-tag">${fc.tag}</div>
+        <p>${fc.back}</p>
+      </div>
+    </div>`).join('');
+}
+
+function flipCard(i) {
+  document.getElementById('fc-'+i).classList.toggle('flipped');
+}
+
+// ============ SUBJECTIVE ============
+function renderSubjective() {
+  const c = document.getElementById('subjectiveContainer');
+  if(!c) return;
+  c.innerHTML = subjectiveQuestions.map((sq,i) => `
+    <div class="exam-card">
+      <h3>${sq.q}</h3>
+      <div class="accordion" id="sqacc${i}">
+        <div class="accordion-header" onclick="toggleAccordion('sqacc${i}')">📝 View Model Answer <span class="arrow">▼</span></div>
+        <div class="accordion-body">
+          <div class="highlight"><strong>Introduction:</strong><br>${sq.intro}</div>
+          <h4 style="color:var(--accent2);margin:12px 0 8px">Main Points:</h4>
+          <ol style="font-size:13.5px;color:var(--text2);line-height:2;padding-left:20px">
+            ${sq.points.map(p=>`<li>${p}</li>`).join('')}
+          </ol>
+          <div class="highlight" style="margin-top:12px"><strong>Conclusion:</strong><br>${sq.conclusion}</div>
+          <div style="margin-top:12px">
+            <strong style="color:var(--accent2)">🔑 Keywords to underline:</strong>
+            <div class="keywords">${sq.keywords.map(k=>`<span class="keyword">${k}</span>`).join('')}</div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ============ DEFINITIONS & THEORIES ============
+function renderDefs() {
+  const c = document.getElementById('defsContainer');
+  if(!c) return;
+  c.innerHTML = definitions.map((d,i) => `
+    <div class="exam-card" style="padding:16px 20px;margin-bottom:12px">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-family:var(--font-head);font-size:20px;font-weight:800;color:var(--accent);min-width:30px">${i+1}</span>
+        <div><strong style="color:var(--text)">${d.term}</strong><br><span style="font-size:13.5px;color:var(--text2);line-height:1.6">${d.def}</span></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderTheories() {
+  const c = document.getElementById('theoriesContainer');
+  if(!c) return;
+  c.innerHTML = theoriesList.map((t,i) => `
+    <div class="theory-box" style="margin-bottom:14px">
+      <h4>${i+1}. ${t.name}</h4>
+      <div class="theory-meta"><span class="theory-tag">👤 ${t.author}</span></div>
+      <p style="font-size:13.5px;color:var(--text2)">${t.desc}</p>
+    </div>`).join('');
+}
+
+// ============ KEYWORDS ============
+function renderKeywords() {
+  const c = document.getElementById('keywordCloud');
+  if(!c) return;
+  c.innerHTML = keywords50.map(k => `<span class="keyword" style="cursor:pointer">${k}</span>`).join('');
+}
+
+// ============ MOCK TEST ============
+function renderMockTest() {
+  const partA = document.getElementById('mockPartA');
+  const partB = document.getElementById('mockPartB');
+  if(!partA||!partB) return;
+
+  const mockQs = [...samplePaperMCQs].slice(0, 30);
+  partA.innerHTML = mockQs.map((q,i) => `
+    <div class="quiz-question">
+      <div class="q-number">Q${i+1}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt,j)=>`<div class="quiz-option" onclick="checkAns(this,${j},${q.ans},'mockexp${i}')">(${String.fromCharCode(65+j)}) ${opt}</div>`).join('')}
+      </div>
+      <div class="quiz-explanation" id="mockexp${i}"><strong>✅ (${String.fromCharCode(65+q.ans)}) ${q.opts[q.ans]}</strong><br>${q.exp}</div>
+    </div>`).join('');
+
+  const partBQs = [
+    "Q2. Create a theoretical framework that explains the sources of resilience in individuals across different cultural and socioeconomic backgrounds. How might these sources differ, and what implications do they have for interventions?",
+    "Q3. Explain the role of journal writing in promoting mental health and well-being. Illustrate how individuals can utilize journaling for self-reflection, gratitude practice, and personal growth.",
+    "Q4. Explain how the measurement of happiness has evolved over time and discuss the challenges associated with quantifying such a subjective concept.",
+    "Q5. How do you think repeatedly exerting self-control in daily life affects your ability to maintain self-control over time? Share your personal thoughts and experiences.",
+    "Q6. Explain critically Allport's trait theory of personality."
+  ];
+  partB.innerHTML = partBQs.map((q,i) => `
+    <div class="exam-card">
+      <h3>${q}</h3>
+      <textarea style="width:100%;min-height:120px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--text);font-family:var(--font-body);font-size:13.5px;resize:vertical;margin-top:12px" placeholder="Write your answer here..."></textarea>
+      <p style="font-size:12px;color:var(--text2);margin-top:6px">10 marks – Aim for 4-5 well-structured paragraphs with introduction and conclusion.</p>
+    </div>`).join('');
+}
+
+// ============ MOCK TIMER ============
+let mockTimerInterval, mockSeconds = 10800;
+function startMockTimer() {
+  clearInterval(mockTimerInterval);
+  mockTimerInterval = setInterval(() => {
+    mockSeconds = Math.max(0, mockSeconds - 1);
+    const h = Math.floor(mockSeconds/3600), m = Math.floor((mockSeconds%3600)/60), s = mockSeconds%60;
+    document.getElementById('mockTimer').textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(mockSeconds===0) clearInterval(mockTimerInterval);
+  }, 1000);
+}
+function stopMockTimer() { clearInterval(mockTimerInterval); }
+function resetMockTimer() { clearInterval(mockTimerInterval); mockSeconds = 10800; document.getElementById('mockTimer').textContent = '03:00:00'; }
+
+// ============ NAVIGATION ============
+let visitedPages = new Set(['home']);
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+  const page = document.getElementById('page-'+id);
+  if(page) { page.classList.add('active'); }
+  if(el) el.classList.add('active');
+  document.getElementById('topbarTitle').textContent = el ? el.textContent.trim() : id;
+
+  // Lazy render
+  if(id === 'flashcards' && !document.querySelector('.flashcard')) renderFlashcards();
+  if(id === 'subjective' && !document.querySelector('.exam-card')) renderSubjective();
+  if(id === 'keywords') { renderDefs(); renderTheories(); }
+  if(id === 'mcq-quiz') {
+    Object.entries(unitQuizzes).forEach(([cid, data]) => {
+      if(document.getElementById(cid)) renderQuiz(data, cid);
+    });
+  }
+  if(id === 'mock-test') renderMockTest();
+  if(id === 'quick-revision') renderKeywords();
+
+  // Unit quiz rendering
+  const unitQuizId = {'unit1':'u1-quiz','unit2':'u2-quiz','unit3':'u3-quiz','unit4':'u4-quiz','unit5':'u5-quiz','unit6':'u6-quiz'}[id];
+  if(unitQuizId && document.getElementById(unitQuizId) && !document.getElementById(unitQuizId).children.length) {
+    renderQuiz(unitQuizzes[unitQuizId], unitQuizId);
+  }
+
+  visitedPages.add(id);
+  updateProgress();
+  closeSidebar();
+}
+
+function updateProgress() {
+  const total = 12;
+  const pct = Math.round((visitedPages.size / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// ============ TABS ============
+function switchTab(prefix, name, el) {
+  document.querySelectorAll(`[id^="${prefix}-"]`).forEach(t => t.classList.remove('active'));
+  el.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  const target = document.getElementById(`${prefix}-${name}`);
+  if(target) target.classList.add('active');
+  el.classList.add('active');
+}
+
+// ============ ACCORDION ============
+function toggleAccordion(id) {
+  const body = document.querySelector(`#${id} .accordion-body`);
+  const arrow = document.querySelector(`#${id} .arrow`);
+  if(body.classList.contains('open')) {
+    body.classList.remove('open');
+    if(arrow) arrow.textContent = '▼';
+  } else {
+    body.classList.add('open');
+    if(arrow) arrow.textContent = '▲';
+  }
+}
+
+// ============ THEME ============
+function toggleTheme() {
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+}
+
+// ============ SIDEBAR MOBILE ============
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// ============ STREAK TRACKER ============
+function initStreak() {
+  const days = document.getElementById('streakDays');
+  if(!days) return;
+  const dayNames = ['M','T','W','T','F','S','S'];
+  dayNames.forEach((d,i) => {
+    const el = document.createElement('div');
+    el.className = 'streak-day';
+    el.textContent = d;
+    el.onclick = () => { el.classList.toggle('done'); };
+    days.appendChild(el);
+  });
+}
+
+// ============ INIT ============
+window.onload = function() {
+  initStreak();
+  // Pre-render unit quizzes when their pages are first activated
+  updateProgress();
+};
+</script>
+</body>
+</html>
